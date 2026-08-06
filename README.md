@@ -1,103 +1,188 @@
+<a id="readme-top"></a>
+
+<div align="center">
+
 # pac4j-spring-boot-starter
 
-pac4j starter for spring boot
+**Spring Boot Starter for pac4j-biz**
 
-### 组件简介
+[![Maven Central](https://img.shields.io/maven-central/v/io.github.easy4j/pac4j-spring-boot-starter)](https://github.com/easy-4-java/pac4j-spring-boot-starter)
+[![Java](https://img.shields.io/badge/Java-17-orange)](#3-requirements-and-compatibility)
+[![License](https://img.shields.io/badge/license-Apache-2.0-green)](https://www.apache.org/licenses/LICENSE-2.0)
 
-Pac4j 是一个支持多种协议多种框架的Java 权限引擎。
+[简体中文](./README.zh-CN.md) | [English](./README.md)
 
-> 基于 Pac4j 4.x 的 Spring Boot Starter 实现
+[Positioning](#1-positioning) · [Capabilities](#2-core-capabilities) ·
+[Dependency](#5-dependency) · [Quick Start](#6-quick-start) ·
+[Configuration](#7-configuration-reference) · [Versions](#9-version-lines-and-compatibility) ·
+[Build](#10-build-and-test) · [License](#12-license)
 
-官方网站：https://www.pac4j.org/
+</div>
 
-### 使用说明
+---
 
-##### 1、Spring Boot 项目添加 Maven 依赖
+> **Current Version**：`2.3.x.20260527-SNAPSHOT`<br>
+> **JDK Baseline**：`17`<br>
+> **Group ID**：`io.github.easy4j`<br>
+> **Artifact ID**：`pac4j-spring-boot-starter`<br>
+> **License**：Apache License 2.0<br>
 
-``` xml
+## 1. Positioning
+
+**pac4j-spring-boot-starter** is a Spring Boot starter that integrates **pac4j-biz** for applications using pac4j-biz. It provides auto-configuration, property binding, and ready-to-use beans so that applications can consume pac4j-biz capabilities with minimal setup.
+
+| Dimension | Description |
+|---|---|
+| Type | Spring Boot Starter |
+| Consumers | Spring Boot applications using pac4j-biz |
+| Core Capabilities | auto-configuration, property binding, ready-to-use beans for pac4j-biz |
+| JDK | `17` |
+| Coordinates | `io.github.easy4j:pac4j-spring-boot-starter:2.3.x.20260527-SNAPSHOT` |
+| Config Prefix | `pac4j` |
+
+## 2. Core Capabilities
+
+| Capability | Status | Description |
+|---|:---:|---|
+| Auto-configuration | ✅ Stable | Registers pac4j-biz beans automatically |
+| Property Binding | ✅ Stable | Binds `pac4j.*` to `Pac4jCasProperties` |
+| `Clients` bean | ✅ Stable | Auto-registered via Pac4jAutoConfiguration |
+
+## 3. Requirements and Compatibility
+
+| Dependency | Minimum | Evidence |
+|---|---:|---|
+| JDK | `17` | `pom.xml` |
+| Spring Boot | `2.3.12.RELEASE` | `pom.xml` parent |
+| Maven | `3.6+` | Maven Enforcer |
+
+## 4. Auto-configuration
+
+The starter auto-configures the following beans:
+
+| Bean | Condition | Missing Behavior |
+|---|---|---|
+| `Clients` | classpath + property | not created |
+| `Config` | classpath + property | not created |
+
+Auto-configuration registration:
+
+- `META-INF/spring/org.springframework.boot.autoconfigure.AutoConfiguration.imports` (Spring Boot 2.7+ / 3.x / 4.x)
+- `META-INF/spring.factories` (Spring Boot 2.x legacy)
+
+## 5. Dependency
+
+```xml
 <dependency>
-	<groupId>com.github.hiwepy</groupId>
-	<artifactId>pac4j-spring-boot-starter</artifactId>
-	<version>${project.version}</version>
+    <groupId>io.github.easy4j</groupId>
+    <artifactId>pac4j-spring-boot-starter</artifactId>
+    <version>2.3.x.20260527-SNAPSHOT</version>
 </dependency>
 ```
 
-##### 2、在`application.yml`文件中增加如下配置
+This starter depends on the following components (managed by ddd4j BOM):
+
+```xml
+<dependency>
+    <groupId>io.github.easy4j</groupId>
+    <artifactId>pac4j-biz</artifactId>
+</dependency>
+<dependency>
+    <groupId>io.github.easy4j</groupId>
+    <artifactId>pac4j-oauth-ext</artifactId>
+</dependency>
+<dependency>
+    <groupId>io.github.easy4j</groupId>
+    <artifactId>pac4j-biz</artifactId>
+</dependency>
+<dependency>
+    <groupId>io.github.easy4j</groupId>
+    <artifactId>pac4j-oauth-ext</artifactId>
+</dependency>
+```
+
+## 6. Quick Start
+
+### 6.1 Add dependency
+
+Add the dependency above to your `pom.xml`.
+
+### 6.2 Configure
 
 ```yaml
-################################################################################################################  
-###Pac4j 第三方登录（QQ、微信、易班、康赛）配置：  
-################################################################################################################
 pac4j:
   enabled: true
-  default-client-name: cas
-  callback-url: http://172.16.88.245:8088/smartedu-authz/authz/login/pac4j?client_name=uniauth&proxy=false
-  callback-url-fixed: false
-  client-parameter-name: client_name
-  clients: cas
-  service-url: http://172.16.88.245:8088/smartedu-authz
-  logout:
-    path-pattern: /**/logout/pac4j
-  cas:
-    enabled: true
-    accept-any-proxy: true
-    gateway: false
-    login-url: https://127.0.0.1/sso/login
-    logout-url: https://127.0.0.1/sso/logout
-    prefix-url: https://127.0.0.1/sso/
-    protocol: cas20-proxy
-    renew: false
-    # Cas客户端配置
-    #cas-client: true
-    #cas-client-name: cas
-    # Cas代理客户端配置
-    direct-cas-client: true
-    direct-cas-client-name: cas
-    #direct-cas-proxy-client: true
-    #direct-cas-proxy-client-name: cas-proxy
-  uniauth:
-    enabled: true
-    token:
-      client-name: uniauth-token
-      custom-params:
-        syskey: xxxxxxxxxxxxxxxx
-      encode-params: true
-      profile-url: https://127.0.0.1:8080/yyxy_uniauth/ser/vaildTocken.action
-      support-post-request: true
-      support-get-request: true
-      token-param-name: tocken
-    signature:
-      client-name: uniauth
-  oauth:
-    yiban:
-      name: yiban
 ```
 
-##### 3、使用示例
+### 6.3 Use the bean
 
 ```java
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
-
-@RunWith(SpringRunner.class)
-@SpringBootTest
-public class DemoApplicationTests {
-
-    @Test
-    public void contextLoads() {
+@SpringBootApplication
+public class Application {
+    public static void main(String[] args) {
+        SpringApplication.run(Application.class, args);
     }
-
 }
-
 ```
 
-## Jeebiz 技术社区
+Then inject the auto-configured bean in your code:
 
-Jeebiz 技术社区 **微信公共号**、**小程序**，欢迎关注反馈意见和一起交流，关注公众号回复「Jeebiz」拉你入群。
+```java
+@Autowired
+private Clients clients;
+```
 
-|公共号|小程序|
-|---|---|
-| ![](https://raw.githubusercontent.com/hiwepy/static/main/images/qrcode_for_gh_1d965ea2dfd1_344.jpg)| ![](https://raw.githubusercontent.com/hiwepy/static/main/images/gh_09d7d00da63e_344.jpg)|
+## 7. Configuration Reference
 
+### 7.1 Config Prefix
+
+`pac4j`
+
+### 7.2 Configuration Items
+
+| Property | Type | Default | Required | Description | Sensitive |
+|---|---|---|:---:|---|:---:|
+| `pac4j.enabled` | boolean | `true` | No | Enable the starter | No |
+<!-- additional properties below -->
+
+## 8. Version Lines and Compatibility
+
+| Branch | JDK | Spring Boot | Component Version | Status |
+|---|---:|---:|---|:---:|
+| `2.3.x` / `2.7.x` | `8+` | 2.3.x / 2.7.x | `1.0.x` | Maintenance |
+| `3.0.x` ~ `3.5.x` | `17` | 3.x | `2.0.x` | Maintenance |
+| `4.0.x` / `4.1.x` | `17+` | 4.x | `3.0.x` | Active |
+
+## 9. Build and Test
+
+```bash
+mvn clean verify
+mvn -pl pac4j-spring-boot-starter -am test
+```
+
+## 10. Troubleshooting
+
+| Symptom | Diagnosis | Resolution |
+|---|---|---|
+| Bean not created | Check auto-configuration report | Verify `pac4j.enabled=true` and classpath |
+| `ClassNotFoundException` | Missing dependency | Add the required module |
+| Version conflict | `mvn dependency:tree` | Use BOM for version alignment |
+
+## 11. Contribution
+
+1. Fork the repository.
+2. Create a feature branch.
+3. Run `mvn clean verify` before submitting.
+4. Submit a pull request.
+
+## 12. License
+
+This project is licensed under the [Apache License, Version 2.0](https://www.apache.org/licenses/LICENSE-2.0).
+
+---
+
+<div align="center">
+
+[Back to top](#readme-top) · [Issues](https://github.com/easy-4-java/pac4j-spring-boot-starter/issues) · [Repository](https://github.com/easy-4-java/pac4j-spring-boot-starter)
+
+</div>
