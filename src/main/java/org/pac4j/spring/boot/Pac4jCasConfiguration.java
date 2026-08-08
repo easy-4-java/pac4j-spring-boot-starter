@@ -81,7 +81,7 @@ public class Pac4jCasConfiguration {
 	/**
 	 * 
 	 * TODO
-	 * @author 		： <a href="https://github.com/hiwepy">wandl</a>
+	 * @author [@Loong Wan](https://github.com/loong10k)
 	 * @param configuration
 	 * @return
 	 */
