@@ -22,7 +22,7 @@ import org.pac4j.http.credentials.authenticator.test.SimpleTestUsernamePasswordA
 import org.springframework.boot.autoconfigure.AutoConfigureBefore;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
-import org.springframework.boot.autoconfigure.web.ServerProperties;
+
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -31,7 +31,7 @@ import org.springframework.context.annotation.Configuration;
 @AutoConfigureBefore(Pac4jAutoConfiguration.class)
 @ConditionalOnClass({ FormClient.class, IndirectBasicAuthClient.class})
 @ConditionalOnProperty(prefix = Pac4jHttpProperties.PREFIX, value = "enabled", havingValue = "true")
-@EnableConfigurationProperties({ Pac4jHttpProperties.class, Pac4jProperties.class, ServerProperties.class })
+@EnableConfigurationProperties({ Pac4jHttpProperties.class, Pac4jProperties.class })
 /**
  * Spring Boot configuration for the HTTP-based pac4j clients. <p>Conditionally
  * registers the {@link FormClient}, {@link IndirectBasicAuthClient} and

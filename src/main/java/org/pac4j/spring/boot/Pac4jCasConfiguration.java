@@ -18,7 +18,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.AutoConfigureBefore;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
-import org.springframework.boot.autoconfigure.web.ServerProperties;
+
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.boot.context.properties.PropertyMapper;
 import org.springframework.context.annotation.Bean;
@@ -29,7 +29,7 @@ import org.springframework.context.annotation.Configuration;
 @AutoConfigureBefore(Pac4jAutoConfiguration.class)
 @ConditionalOnClass({CasConfiguration.class})
 @ConditionalOnProperty(prefix = Pac4jCasProperties.PREFIX, value = "enabled", havingValue = "true")
-@EnableConfigurationProperties({ Pac4jCasProperties.class, Pac4jProperties.class, ServerProperties.class })
+@EnableConfigurationProperties({ Pac4jCasProperties.class, Pac4jProperties.class })
 public class Pac4jCasConfiguration {
 	
 	@Autowired
@@ -58,7 +58,7 @@ public class Pac4jCasConfiguration {
 		/**
 		 * 批量设置参数
 		 */
-		PropertyMapper map = PropertyMapper.get().alwaysApplyingWhenNonNull();
+		PropertyMapper map = PropertyMapper.get();
 		
 		map.from(pac4jCasProperties.getEncoding()).to(configuration::setEncoding);
 		map.from(pac4jCasProperties.getCustomParams()).to(configuration::setCustomParams);

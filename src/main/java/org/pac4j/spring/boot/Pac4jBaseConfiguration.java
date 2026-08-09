@@ -1,16 +1,19 @@
 package org.pac4j.spring.boot;
 
+import org.pac4j.core.context.JEEContext;
 import org.pac4j.core.ext.http.callback.QueryParameterCallbackUrlExtResolver;
-import org.pac4j.core.http.adapter.HttpActionAdapter;
+import org.pac4j.core.http.adapter.JEEHttpActionAdapter;
 import org.pac4j.core.http.ajax.AjaxRequestResolver;
 import org.pac4j.core.http.ajax.DefaultAjaxRequestResolver;
 import org.pac4j.core.http.callback.CallbackUrlResolver;
 import org.pac4j.core.http.url.DefaultUrlResolver;
 import org.pac4j.core.http.url.UrlResolver;
+import org.pac4j.core.logout.handler.DefaultLogoutHandler;
+import org.pac4j.core.logout.handler.LogoutHandler;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
-import org.springframework.boot.autoconfigure.web.ServerProperties;
+
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -19,7 +22,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @ConditionalOnClass({ DefaultAjaxRequestResolver.class})
 @ConditionalOnProperty(prefix = Pac4jProperties.PREFIX, value = "enabled", havingValue = "true")
-@EnableConfigurationProperties({ ServerProperties.class, Pac4jProperties.class, Pac4jLogoutProperties.class })
+@EnableConfigurationProperties({ Pac4jProperties.class, Pac4jLogoutProperties.class })
 /**
  * Base Spring Boot configuration registering the shared pac4j infrastructure beans:
  * the AJAX-request resolver, callback-URL resolver, URL resolver, HTTP action adapter
@@ -60,7 +63,7 @@ public class Pac4jBaseConfiguration {
 	
 	@Bean
 	@ConditionalOnMissingBean
-	protected HttpActionAdapter httpActionAdapter() {
+	protected JEEHttpActionAdapter httpActionAdapter() {
 		return JEEHttpActionAdapter.INSTANCE;
 	}
 }
