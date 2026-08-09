@@ -14,6 +14,15 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
+/**
+ * Core {@code pac4j.*} configuration properties for the pac4j Spring Boot starter.
+ * <p>Binds the security client settings (login/callback URLs, client selection,
+ * authorizers, matchers, IP and HTTP-method restrictions) used to drive the pac4j
+ * security filters and callbacks.</p>
+ *
+ * @author [@Loong Wan](https://github.com/loong10k)
+ * @since 1.0.0
+ */
 public class Pac4jProperties {
 
 	/* ================================== Pac4j ================================= */

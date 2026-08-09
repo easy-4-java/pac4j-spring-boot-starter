@@ -34,6 +34,14 @@ import org.springframework.context.annotation.Configuration;
 import com.github.scribejava.apis.SinaWeiboApi20;
 import com.github.scribejava.core.builder.api.DefaultApi20;
 
+/**
+ * Auto-configuration for PAC4J OAuth authentication.
+ * <p>Registers OAuth clients for various providers (Facebook, GitHub, Google, etc.)
+ * when their respective properties are configured.</p>
+ *
+ * @author [@Loong Wan](https://github.com/loong10k)
+ * @since 1.0.0
+ */
 @Configuration
 @AutoConfigureBefore(Pac4jAutoConfiguration.class)
 @ConditionalOnClass({ OAuth20Client.class, DefaultApi20.class, SinaWeiboApi20.class })
@@ -293,6 +301,14 @@ public class Pac4jOAuthConfiguration {
 	}
 
 
+	/**
+	 * Initialises an OAuth 1.0 client with the given properties.
+	 * @param <U> the OAuth 1.0 profile type
+	 * @param client the OAuth 1.0 client to initialise
+	 * @param properties the client properties
+	 * @param ajaxRequestResolver the AJAX request resolver
+	 * @param urlResolver the URL resolver
+	 */
 	protected <U extends OAuth10Profile> void initOAuth10Client(OAuth10Client client,
 			Pac4jOAuthClientProperties properties, AjaxRequestResolver ajaxRequestResolver,
 			UrlResolver urlResolver) {
@@ -314,6 +330,14 @@ public class Pac4jOAuthConfiguration {
 
 	}
 
+	/**
+	 * Initialises an OAuth 2.0 client with the given properties.
+	 * @param <U> the OAuth 2.0 profile type
+	 * @param client the OAuth 2.0 client to initialise
+	 * @param properties the client properties
+	 * @param ajaxRequestResolver the AJAX request resolver
+	 * @param urlResolver the URL resolver
+	 */
 	protected <U extends OAuth20Profile> void initOAuth20Client(OAuth20Client client,
 			Pac4jOAuthClientProperties properties, AjaxRequestResolver ajaxRequestResolver,
 			UrlResolver urlResolver) {

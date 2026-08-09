@@ -46,6 +46,15 @@ import org.springframework.util.StringUtils;
 @ConditionalOnProperty(prefix = Pac4jProperties.PREFIX, value = "enabled", havingValue = "true")
 @EnableConfigurationProperties({ Pac4jProperties.class })
 @SuppressWarnings("rawtypes")
+/**
+ * Spring Boot auto-configuration for pac4j. <p>Registers the central {@link Clients}
+ * and {@link Config} beans, wiring together the discovered security clients, their
+ * authorization generators, URL/callback resolvers, the HTTP action adapter and the
+ * IP / HTTP-method authorizers derived from the {@link Pac4jProperties}.</p>
+ *
+ * @author [@Loong Wan](https://github.com/loong10k)
+ * @since 1.0.0
+ */
 public class Pac4jAutoConfiguration {
 
 	protected final Logger logger = LoggerFactory.getLogger(getClass());

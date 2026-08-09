@@ -26,6 +26,14 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
+/**
+ * {@code pac4j.http.*} configuration properties for the HTTP-based clients. <p>Binds the
+ * toggles, names and credential parameters for the form, indirect basic-auth and direct
+ * basic-auth clients.</p>
+ *
+ * @author [@Loong Wan](https://github.com/loong10k)
+ * @since 1.0.0
+ */
 public class Pac4jHttpProperties {
 
 	public static final String PREFIX = "pac4j.http";

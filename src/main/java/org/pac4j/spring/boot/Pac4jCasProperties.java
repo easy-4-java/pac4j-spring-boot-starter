@@ -33,6 +33,15 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
+/**
+ * {@code pac4j.cas.*} configuration properties for the CAS (Central Authentication
+ * Service) client. <p>Binds the CAS server endpoints, ticket-validation options and the
+ * per-client toggles and names for the CAS, direct CAS/proxy and REST (basic-auth and
+ * form) clients.</p>
+ *
+ * @author [@Loong Wan](https://github.com/loong10k)
+ * @since 1.0.0
+ */
 public class Pac4jCasProperties {
 
 	public static final String PREFIX = "pac4j.cas";

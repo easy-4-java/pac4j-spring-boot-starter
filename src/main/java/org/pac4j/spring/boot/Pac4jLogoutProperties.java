@@ -25,6 +25,14 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
+/**
+ * {@code pac4j.logout.*} configuration properties for the logout behaviour. <p>Binds the
+ * logout path pattern, the local/central logout toggles, session destruction flag and
+ * the default redirect URL after logout.</p>
+ *
+ * @author [@Loong Wan](https://github.com/loong10k)
+ * @since 1.0.0
+ */
 public class Pac4jLogoutProperties {
 
 	public static final String PREFIX = "pac4j.logout";

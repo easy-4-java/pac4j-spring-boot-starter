@@ -32,6 +32,15 @@ import org.springframework.context.annotation.Configuration;
 @ConditionalOnClass({ FormClient.class, IndirectBasicAuthClient.class})
 @ConditionalOnProperty(prefix = Pac4jHttpProperties.PREFIX, value = "enabled", havingValue = "true")
 @EnableConfigurationProperties({ Pac4jHttpProperties.class, Pac4jProperties.class, ServerProperties.class })
+/**
+ * Spring Boot configuration for the HTTP-based pac4j clients. <p>Conditionally
+ * registers the {@link FormClient}, {@link IndirectBasicAuthClient} and
+ * {@link DirectBasicAuthClient} beans backed by a test username/password authenticator
+ * when the corresponding properties are enabled.</p>
+ *
+ * @author [@Loong Wan](https://github.com/loong10k)
+ * @since 1.0.0
+ */
 public class Pac4jHttpConfiguration {
 
 	@Bean

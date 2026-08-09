@@ -48,6 +48,14 @@ import com.nimbusds.jose.EncryptionMethod;
 import com.nimbusds.jose.JWEAlgorithm;
 import com.nimbusds.jose.JWSAlgorithm;
 
+/**
+ * Auto-configuration for PAC4J JWT authentication.
+ * <p>Registers JWT authenticator, signature/encryption configurations and various
+ * authentication clients (cookie, header, parameter, form) when JWT is enabled.</p>
+ *
+ * @author [@Loong Wan](https://github.com/loong10k)
+ * @since 1.0.0
+ */
 @Configuration
 @AutoConfigureBefore(Pac4jAutoConfiguration.class)
 @ConditionalOnClass({ CookieClient.class, ParameterClient.class, HeaderClient.class, JwtAuthenticator.class })
@@ -58,6 +66,10 @@ public class Pac4jJwtConfiguration {
 	@Autowired
 	private Pac4jJwtProperties jwtProperties;
 
+	/**
+	 * Creates the JWT encryption configuration.
+	 * @return the encryption configuration
+	 */
 	@Bean
 	@ConditionalOnMissingBean
 	public EncryptionConfiguration encryptionConfiguration() {
@@ -67,6 +79,10 @@ public class Pac4jJwtConfiguration {
 		return encryptionConfiguration;
 	}
 	
+	/**
+	 * Creates the JWT signature configuration.
+	 * @return the signature configuration
+	 */
 	@Bean
 	@ConditionalOnMissingBean
 	public SignatureConfiguration signatureConfiguration() {
@@ -74,6 +90,12 @@ public class Pac4jJwtConfiguration {
 				JWSAlgorithm.parse(jwtProperties.getJwsAlgorithm().value()));
 	}
 
+	/**
+	 * Creates the JWT authenticator.
+	 * @param signatureConfigurations the signature configurations
+	 * @param encryptionConfigurations the encryption configurations
+	 * @return the JWT authenticator
+	 */
 	@Bean
 	@ConditionalOnMissingBean
 	public JwtAuthenticator jwtAuthenticator(List<SignatureConfiguration> signatureConfigurations,
@@ -91,6 +113,12 @@ public class Pac4jJwtConfiguration {
 		return authenticator;
 	}
 	
+	/**
+	 * Creates the username/password/captcha authenticator for JWT authentication.
+	 * @param captchaResolver the captcha resolver
+	 * @param failureCounter the authentication failure counter
+	 * @return the authenticator
+	 */
 	@Bean("jwtUpcAuthenticator")
 	public UsernamePasswordCaptchaAuthenticator jwtUpcAuthenticator(CaptchaResolver captchaResolver,
 			AuthenticatingFailureCounter failureCounter) {
@@ -106,6 +134,10 @@ public class Pac4jJwtConfiguration {
 		return authenticator;
 	}
 	
+	/**
+	 * Creates the username/password/captcha credentials extractor.
+	 * @return the credentials extractor
+	 */
 	@Bean("jwtUpcCredentialsExtractor")
 	public UsernamePasswordCaptchaCredentialsExtractor jwtUpcCredentialsExtractor() {
 
@@ -119,6 +151,15 @@ public class Pac4jJwtConfiguration {
 		
 	}
 	
+	/**
+	 * Creates the JWT form-based authentication client with captcha support.
+	 * @param ajaxRequestResolver the AJAX request resolver
+	 * @param callbackUrlResolver the callback URL resolver
+	 * @param authenticator the username/password/captcha authenticator
+	 * @param credentialsExtractor the credentials extractor
+	 * @param urlResolver the URL resolver
+	 * @return the form client
+	 */
 	@Bean("jwtAuthcClient")
  	public UsernamePasswordCaptchaFormClient jwtAuthcClient(AjaxRequestResolver ajaxRequestResolver, CallbackUrlResolver callbackUrlResolver,
  			@Qualifier("jwtUpcAuthenticator") UsernamePasswordCaptchaAuthenticator authenticator,
@@ -146,6 +187,11 @@ public class Pac4jJwtConfiguration {
  		return client;
  	}
 	
+	/**
+	 * Creates the JWT cookie-based authorization client.
+	 * @param jwtAuthenticator the JWT authenticator
+	 * @return the cookie client
+	 */
 	@Bean("jwtCookieAuthzClient")
 	public CookieClient jwtCookieAuthzClient(JwtAuthenticator jwtAuthenticator) {
 
@@ -166,6 +212,11 @@ public class Pac4jJwtConfiguration {
 		return client;
 	}
 
+	/**
+	 * Creates the JWT header-based authorization client.
+	 * @param jwtAuthenticator the JWT authenticator
+	 * @return the header client
+	 */
 	@Bean("jwtHeaderAuthzClient")
 	public HeaderClient jwtHeaderAuthzClient(JwtAuthenticator jwtAuthenticator) {
 
@@ -186,6 +237,11 @@ public class Pac4jJwtConfiguration {
 		return client;
 	}
 
+	/**
+	 * Creates the JWT parameter-based authorization client.
+	 * @param jwtAuthenticator the JWT authenticator
+	 * @return the parameter client
+	 */
 	@Bean
 	public ParameterClient jwtParamAuthzClient(JwtAuthenticator jwtAuthenticator) {
 		

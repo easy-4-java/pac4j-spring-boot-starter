@@ -30,6 +30,15 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
+/**
+ * {@code pac4j.jwt.*} configuration properties for the JWT (JSON Web Token) clients and
+ * generators. <p>Binds the JWT login/captcha session keys, the authorization header and
+ * parameter names, and the supported JWS/JWE algorithm and encryption-method
+ * enumerations used for signing and encrypting tokens.</p>
+ *
+ * @author [@Loong Wan](https://github.com/loong10k)
+ * @since 1.0.0
+ */
 public class Pac4jJwtProperties {
 
 	public static final String DEFAULT_SESSION_CAPTCHA_KEY = "KAPTCHA_SESSION_KEY";
@@ -37,6 +46,9 @@ public class Pac4jJwtProperties {
 	public static final String AUTHORIZATION_PARAM = "token";
 	public static final String PREFIX = "pac4j.jwt";
 
+	/**
+	 * Supported JWE (JSON Web Encryption) key-encryption algorithms.
+	 */
 	public enum JWEAlgorithm {
 		
 		/**

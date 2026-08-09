@@ -20,6 +20,14 @@ import org.springframework.context.annotation.Configuration;
 @ConditionalOnClass({ DefaultAjaxRequestResolver.class})
 @ConditionalOnProperty(prefix = Pac4jProperties.PREFIX, value = "enabled", havingValue = "true")
 @EnableConfigurationProperties({ ServerProperties.class, Pac4jProperties.class, Pac4jLogoutProperties.class })
+/**
+ * Base Spring Boot configuration registering the shared pac4j infrastructure beans:
+ * the AJAX-request resolver, callback-URL resolver, URL resolver, HTTP action adapter
+ * and the logout handler.
+ *
+ * @author [@Loong Wan](https://github.com/loong10k)
+ * @since 1.0.0
+ */
 public class Pac4jBaseConfiguration {
 	
 	@Bean
