@@ -28,7 +28,7 @@ import org.pac4j.jwt.credentials.authenticator.JwtAuthenticator;
 /**
  * Tests for {@link Pac4jJwtConfiguration} bean methods.
  *
- * @author [@Loong Wan](https://github.com/loong10k)
+ * @author <a href="https://github.com/loong10k">Loong Wan</a>
  */
 class Pac4jJwtConfigurationTest {
 

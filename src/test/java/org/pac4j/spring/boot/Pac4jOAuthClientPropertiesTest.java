@@ -12,7 +12,7 @@ import org.junit.jupiter.api.Test;
  * {@link Pac4jOAuthCasClientProperties}, {@link Pac4jOAuthOkClientProperties},
  * {@link Pac4jOAuthStravaClientProperties}.
  *
- * @author [@Loong Wan](https://github.com/loong10k)
+ * @author <a href="https://github.com/loong10k">Loong Wan</a>
  */
 class Pac4jOAuthClientPropertiesTest {
 

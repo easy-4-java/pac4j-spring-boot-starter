@@ -11,7 +11,7 @@ import org.pac4j.core.http.url.UrlResolver;
 /**
  * Tests for {@link Pac4jOAuthConfiguration} bean methods.
  *
- * @author [@Loong Wan](https://github.com/loong10k)
+ * @author <a href="https://github.com/loong10k">Loong Wan</a>
  */
 class Pac4jOAuthConfigurationTest {
 

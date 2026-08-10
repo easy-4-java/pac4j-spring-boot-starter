@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 /**
  * Tests for configuration classes - basic instantiation.
  *
- * @author [@Loong Wan](https://github.com/loong10k)
+ * @author <a href="https://github.com/loong10k">Loong Wan</a>
  */
 class Pac4jConfigurationClassesTest {
 

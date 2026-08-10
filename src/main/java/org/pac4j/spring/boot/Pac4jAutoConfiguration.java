@@ -52,7 +52,7 @@ import org.springframework.util.StringUtils;
  * authorization generators, URL/callback resolvers, the HTTP action adapter and the
  * IP / HTTP-method authorizers derived from the {@link Pac4jProperties}.</p>
  *
- * @author [@Loong Wan](https://github.com/loong10k)
+ * @author <a href="https://github.com/loong10k">Loong Wan</a>
  * @since 1.0.0
  */
 public class Pac4jAutoConfiguration {

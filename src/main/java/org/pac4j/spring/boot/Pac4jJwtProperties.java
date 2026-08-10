@@ -36,7 +36,7 @@ import lombok.ToString;
  * parameter names, and the supported JWS/JWE algorithm and encryption-method
  * enumerations used for signing and encrypting tokens.</p>
  *
- * @author [@Loong Wan](https://github.com/loong10k)
+ * @author <a href="https://github.com/loong10k">Loong Wan</a>
  * @since 1.0.0
  */
 public class Pac4jJwtProperties {

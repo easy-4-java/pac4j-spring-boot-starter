@@ -28,7 +28,7 @@ import org.springframework.context.annotation.Configuration;
  * the AJAX-request resolver, callback-URL resolver, URL resolver, HTTP action adapter
  * and the logout handler.
  *
- * @author [@Loong Wan](https://github.com/loong10k)
+ * @author <a href="https://github.com/loong10k">Loong Wan</a>
  * @since 1.0.0
  */
 public class Pac4jBaseConfiguration {

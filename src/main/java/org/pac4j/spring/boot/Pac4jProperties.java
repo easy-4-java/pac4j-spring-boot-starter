@@ -20,7 +20,7 @@ import lombok.ToString;
  * authorizers, matchers, IP and HTTP-method restrictions) used to drive the pac4j
  * security filters and callbacks.</p>
  *
- * @author [@Loong Wan](https://github.com/loong10k)
+ * @author <a href="https://github.com/loong10k">Loong Wan</a>
  * @since 1.0.0
  */
 public class Pac4jProperties {

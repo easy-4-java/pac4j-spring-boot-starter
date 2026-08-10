@@ -53,7 +53,7 @@ import com.nimbusds.jose.JWSAlgorithm;
  * <p>Registers JWT authenticator, signature/encryption configurations and various
  * authentication clients (cookie, header, parameter, form) when JWT is enabled.</p>
  *
- * @author [@Loong Wan](https://github.com/loong10k)
+ * @author <a href="https://github.com/loong10k">Loong Wan</a>
  * @since 1.0.0
  */
 @Configuration

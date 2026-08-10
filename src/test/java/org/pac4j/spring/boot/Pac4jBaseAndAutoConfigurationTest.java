@@ -24,7 +24,7 @@ import org.pac4j.core.logout.handler.LogoutHandler;
 /**
  * Tests for {@link Pac4jBaseConfiguration} and {@link Pac4jAutoConfiguration}.
  *
- * @author [@Loong Wan](https://github.com/loong10k)
+ * @author <a href="https://github.com/loong10k">Loong Wan</a>
  */
 class Pac4jBaseAndAutoConfigurationTest {
 

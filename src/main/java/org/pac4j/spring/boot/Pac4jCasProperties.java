@@ -39,7 +39,7 @@ import lombok.ToString;
  * per-client toggles and names for the CAS, direct CAS/proxy and REST (basic-auth and
  * form) clients.</p>
  *
- * @author [@Loong Wan](https://github.com/loong10k)
+ * @author <a href="https://github.com/loong10k">Loong Wan</a>
  * @since 1.0.0
  */
 public class Pac4jCasProperties {

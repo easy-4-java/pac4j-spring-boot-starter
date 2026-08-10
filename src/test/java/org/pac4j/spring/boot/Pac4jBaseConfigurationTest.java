@@ -18,7 +18,7 @@ import java.util.HashMap;
 /**
  * Tests for {@link Pac4jBaseConfiguration}.
  *
- * @author [@Loong Wan](https://github.com/loong10k)
+ * @author <a href="https://github.com/loong10k">Loong Wan</a>
  */
 class Pac4jBaseConfigurationTest {
 

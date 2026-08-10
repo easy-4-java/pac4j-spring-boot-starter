@@ -18,7 +18,7 @@ import org.pac4j.core.logout.handler.LogoutHandler;
 /**
  * Tests for {@link Pac4jCasConfiguration} bean methods.
  *
- * @author [@Loong Wan](https://github.com/loong10k)
+ * @author <a href="https://github.com/loong10k">Loong Wan</a>
  */
 class Pac4jCasConfigurationTest {
 

@@ -30,7 +30,7 @@ import lombok.ToString;
  * logout path pattern, the local/central logout toggles, session destruction flag and
  * the default redirect URL after logout.</p>
  *
- * @author [@Loong Wan](https://github.com/loong10k)
+ * @author <a href="https://github.com/loong10k">Loong Wan</a>
  * @since 1.0.0
  */
 public class Pac4jLogoutProperties {

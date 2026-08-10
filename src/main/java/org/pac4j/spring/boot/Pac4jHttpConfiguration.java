@@ -38,7 +38,7 @@ import org.springframework.context.annotation.Configuration;
  * {@link DirectBasicAuthClient} beans backed by a test username/password authenticator
  * when the corresponding properties are enabled.</p>
  *
- * @author [@Loong Wan](https://github.com/loong10k)
+ * @author <a href="https://github.com/loong10k">Loong Wan</a>
  * @since 1.0.0
  */
 public class Pac4jHttpConfiguration {
