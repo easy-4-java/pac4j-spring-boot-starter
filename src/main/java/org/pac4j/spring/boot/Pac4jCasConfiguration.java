@@ -94,15 +94,8 @@ public class Pac4jCasConfiguration {
 	 * @author <a href="https://github.com/loong10k">Loong Wan</a>
 	 * @param configuration
 	 * @return
-	 */
 	@Bean
 	@ConditionalOnProperty(prefix = Pac4jCasProperties.PREFIX, value = Pac4jClientNames.CAS_CLIENT, havingValue = "true")
-    /**
-     * <p>Cas client.</p>
-     * @param configuration
-     * @param callbackUrlResolver
-     * @return the cas client
-     */
 	public CasClient casClient(CasConfiguration configuration, CallbackUrlResolver callbackUrlResolver) {
 		
 		CasClient casClient = new CasClient(configuration);
