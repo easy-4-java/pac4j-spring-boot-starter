@@ -22,6 +22,12 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
+/**
+ * <p>Configuration properties for Pac4jOAuthOkClient.</p>
+ *
+ * @author <a href="https://github.com/loong10k">Loong Wan</a>
+ * @since 1.0.0
+ */
 public class Pac4jOAuthOkClientProperties extends Pac4jOAuthClientProperties {
 
 	/**

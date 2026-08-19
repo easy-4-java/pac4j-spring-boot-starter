@@ -15,6 +15,12 @@
  */
 package org.pac4j.spring.boot.utils;
 
+/**
+ * <p>StringUtils implementation.</p>
+ *
+ * @author <a href="https://github.com/loong10k">Loong Wan</a>
+ * @since 1.0.0
+ */
 public class StringUtils extends org.springframework.util.StringUtils{
 
 	/**

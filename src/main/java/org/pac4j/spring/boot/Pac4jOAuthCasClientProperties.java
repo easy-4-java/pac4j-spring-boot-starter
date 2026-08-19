@@ -15,6 +15,12 @@
  */
 package org.pac4j.spring.boot;
 
+/**
+ * <p>Configuration properties for Pac4jOAuthCasClient.</p>
+ *
+ * @author <a href="https://github.com/loong10k">Loong Wan</a>
+ * @since 1.0.0
+ */
 public class Pac4jOAuthCasClientProperties extends Pac4jOAuthClientProperties {
 
 	 /**

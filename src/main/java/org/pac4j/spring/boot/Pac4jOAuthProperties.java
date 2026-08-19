@@ -26,6 +26,12 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
+/**
+ * <p>Configuration properties for Pac4jOAuth.</p>
+ *
+ * @author <a href="https://github.com/loong10k">Loong Wan</a>
+ * @since 1.0.0
+ */
 public class Pac4jOAuthProperties {
 
 	public static final String PREFIX = "pac4j.oauth";

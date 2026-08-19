@@ -29,6 +29,12 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
+/**
+ * <p>Configuration properties for Pac4jOAuthClient.</p>
+ *
+ * @author <a href="https://github.com/loong10k">Loong Wan</a>
+ * @since 1.0.0
+ */
 public class Pac4jOAuthClientProperties {
 
 	public static final String RESPONSE_TYPE_CODE = "code";

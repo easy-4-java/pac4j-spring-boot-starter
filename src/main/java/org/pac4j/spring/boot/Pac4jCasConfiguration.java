@@ -30,6 +30,12 @@ import org.springframework.context.annotation.Configuration;
 @ConditionalOnClass({CasConfiguration.class})
 @ConditionalOnProperty(prefix = Pac4jCasProperties.PREFIX, value = "enabled", havingValue = "true")
 @EnableConfigurationProperties({ Pac4jCasProperties.class, Pac4jProperties.class })
+/**
+ * <p>Configuration class for Pac4jCas.</p>
+ *
+ * @author <a href="https://github.com/loong10k">Loong Wan</a>
+ * @since 1.0.0
+ */
 public class Pac4jCasConfiguration {
 	
 	@Autowired

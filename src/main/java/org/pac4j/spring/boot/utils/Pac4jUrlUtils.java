@@ -24,6 +24,12 @@ import jakarta.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * <p>Pac4jUrlUtils implementation.</p>
+ *
+ * @author <a href="https://github.com/loong10k">Loong Wan</a>
+ * @since 1.0.0
+ */
 public class Pac4jUrlUtils {
 
 	 private static final Logger LOGGER = LoggerFactory.getLogger(Pac4jUrlUtils.class);
