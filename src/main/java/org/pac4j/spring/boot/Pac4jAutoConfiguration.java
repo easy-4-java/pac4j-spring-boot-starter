@@ -93,6 +93,13 @@ public class Pac4jAutoConfiguration {
 	}
 	
 	@Bean
+    /**
+     * <p>Config.</p>
+     * @param pac4jProperties
+     * @param clients
+     * @param httpActionAdapter
+     * @return the config
+     */
 	public Config config(Pac4jProperties pac4jProperties, Clients clients, HttpActionAdapter httpActionAdapter) {
 		
 		final Config config = new Config(clients);

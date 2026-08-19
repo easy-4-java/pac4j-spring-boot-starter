@@ -72,6 +72,10 @@ public class Pac4jJwtConfiguration {
 	 */
 	@Bean
 	@ConditionalOnMissingBean
+    /**
+     * <p>Encryption configuration.</p>
+     * @return the encryption configuration
+     */
 	public EncryptionConfiguration encryptionConfiguration() {
 		SecretEncryptionConfiguration encryptionConfiguration = new SecretEncryptionConfiguration(
 				jwtProperties.getEncryptSecret(), JWEAlgorithm.parse(jwtProperties.getJweAlgorithm().value()),
@@ -85,6 +89,10 @@ public class Pac4jJwtConfiguration {
 	 */
 	@Bean
 	@ConditionalOnMissingBean
+    /**
+     * <p>Signature configuration.</p>
+     * @return the signature configuration
+     */
 	public SignatureConfiguration signatureConfiguration() {
 		return new SecretSignatureConfiguration(jwtProperties.getSignSecret(),
 				JWSAlgorithm.parse(jwtProperties.getJwsAlgorithm().value()));
@@ -139,6 +147,10 @@ public class Pac4jJwtConfiguration {
 	 * @return the credentials extractor
 	 */
 	@Bean("jwtUpcCredentialsExtractor")
+    /**
+     * <p>Jwt upc credentials extractor.</p>
+     * @return the jwt upc credentials extractor
+     */
 	public UsernamePasswordCaptchaCredentialsExtractor jwtUpcCredentialsExtractor() {
 
 		UsernamePasswordCaptchaCredentialsExtractor credentialsExtractor = new UsernamePasswordCaptchaCredentialsExtractor(
@@ -193,6 +205,11 @@ public class Pac4jJwtConfiguration {
 	 * @return the cookie client
 	 */
 	@Bean("jwtCookieAuthzClient")
+    /**
+     * <p>Jwt cookie authz client.</p>
+     * @param jwtAuthenticator
+     * @return the jwt cookie authz client
+     */
 	public CookieClient jwtCookieAuthzClient(JwtAuthenticator jwtAuthenticator) {
 
 		CookieClient client = new CookieClient(jwtProperties.getAuthorizationCookieName(), 
@@ -218,6 +235,11 @@ public class Pac4jJwtConfiguration {
 	 * @return the header client
 	 */
 	@Bean("jwtHeaderAuthzClient")
+    /**
+     * <p>Jwt header authz client.</p>
+     * @param jwtAuthenticator
+     * @return the jwt header authz client
+     */
 	public HeaderClient jwtHeaderAuthzClient(JwtAuthenticator jwtAuthenticator) {
 
 		HeaderClient client = new HeaderClient(jwtProperties.getAuthorizationHeaderName(), jwtAuthenticator);
@@ -243,6 +265,11 @@ public class Pac4jJwtConfiguration {
 	 * @return the parameter client
 	 */
 	@Bean
+    /**
+     * <p>Jwt param authz client.</p>
+     * @param jwtAuthenticator
+     * @return the jwt param authz client
+     */
 	public ParameterClient jwtParamAuthzClient(JwtAuthenticator jwtAuthenticator) {
 		
 		// REST authent with JWT for a token passed in the url as the token parameter

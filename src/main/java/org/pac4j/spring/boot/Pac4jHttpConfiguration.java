@@ -45,6 +45,11 @@ public class Pac4jHttpConfiguration {
 
 	@Bean
  	@ConditionalOnProperty(prefix = Pac4jHttpProperties.PREFIX, value = Pac4jClientNames.FORM_CLIENT, havingValue = "true")
+    /**
+     * <p>Form client.</p>
+     * @param pac4jHttpProperties
+     * @return the form client
+     */
  	public FormClient formClient(Pac4jHttpProperties pac4jHttpProperties) {
 
 		SimpleTestUsernamePasswordAuthenticator usernamePasswordAuthenticator = new SimpleTestUsernamePasswordAuthenticator();
@@ -57,6 +62,11 @@ public class Pac4jHttpConfiguration {
     
 	@Bean
 	@ConditionalOnProperty(prefix = Pac4jHttpProperties.PREFIX, value = Pac4jClientNames.INDIRECT_BASIC_AUTH_CLIENT, havingValue = "true")
+    /**
+     * <p>Indirect basic auth client.</p>
+     * @param pac4jHttpProperties
+     * @return the indirect basic auth client
+     */
 	public IndirectBasicAuthClient indirectBasicAuthClient(Pac4jHttpProperties pac4jHttpProperties) {
 		
 		final SimpleTestUsernamePasswordAuthenticator usernamePasswordAuthenticator = new SimpleTestUsernamePasswordAuthenticator();
@@ -68,6 +78,11 @@ public class Pac4jHttpConfiguration {
 	
 	@Bean
 	@ConditionalOnProperty(prefix = Pac4jHttpProperties.PREFIX, value = Pac4jClientNames.DIRECT_BASIC_AUTH_CLIENT, havingValue = "true")
+    /**
+     * <p>Direct basic auth client.</p>
+     * @param pac4jHttpProperties
+     * @return the direct basic auth client
+     */
 	public DirectBasicAuthClient directBasicAuthClient(Pac4jHttpProperties pac4jHttpProperties) {
 		
 		final SimpleTestUsernamePasswordAuthenticator usernamePasswordAuthenticator = new SimpleTestUsernamePasswordAuthenticator();

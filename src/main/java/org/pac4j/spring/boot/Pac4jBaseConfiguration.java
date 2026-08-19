@@ -35,6 +35,11 @@ public class Pac4jBaseConfiguration {
 	
 	@Bean
 	@ConditionalOnMissingBean
+    /**
+     * <p>Logout handler.</p>
+     * @param logoutProperties
+     * @return the logout handler
+     */
     public LogoutHandler<JEEContext> logoutHandler(Pac4jLogoutProperties logoutProperties){
 		DefaultLogoutHandler<JEEContext> logoutHandler = new DefaultLogoutHandler<JEEContext>();
 		logoutHandler.setDestroySession(logoutProperties.isDestroySession());
@@ -43,12 +48,21 @@ public class Pac4jBaseConfiguration {
 	
 	@Bean
 	@ConditionalOnMissingBean
+    /**
+     * <p>Ajax request resolver.</p>
+     * @return the ajax request resolver
+     */
 	protected AjaxRequestResolver ajaxRequestResolver() {
 		return new DefaultAjaxRequestResolver();
 	}
 	
 	@Bean
 	@ConditionalOnMissingBean
+    /**
+     * <p>Callback url resolver.</p>
+     * @param pac4jProperties
+     * @return the callback url resolver
+     */
 	protected CallbackUrlResolver callbackUrlResolver(Pac4jProperties pac4jProperties) {
 		return new QueryParameterCallbackUrlExtResolver(pac4jProperties.isCallbackUrlFixed(),
 				pac4jProperties.getCallbackUrl(),
@@ -57,12 +71,21 @@ public class Pac4jBaseConfiguration {
 	
 	@Bean
 	@ConditionalOnMissingBean
+    /**
+     * <p>Url resolver.</p>
+     * @param pac4jProperties
+     * @return the url resolver
+     */
 	protected UrlResolver urlResolver(Pac4jProperties pac4jProperties) {
 		return new DefaultUrlResolver(pac4jProperties.isCompleteRelativeUrl());
 	}
 	
 	@Bean
 	@ConditionalOnMissingBean
+    /**
+     * <p>Http action adapter.</p>
+     * @return the http action adapter
+     */
 	protected JEEHttpActionAdapter httpActionAdapter() {
 		return JEEHttpActionAdapter.INSTANCE;
 	}

@@ -141,6 +141,10 @@ public class Pac4jJwtProperties {
 			this.algorithm = algorithm;
 		}
 
+    /**
+     * <p>Value.</p>
+     * @return the value
+     */
 		public String value() {
 			return algorithm;
 		}
@@ -214,6 +218,10 @@ public class Pac4jJwtProperties {
 			this.algorithm = algorithm;
 		}
 
+    /**
+     * <p>Value.</p>
+     * @return the value
+     */
 		public String value() {
 			return algorithm;
 		}
@@ -269,6 +277,10 @@ public class Pac4jJwtProperties {
 			this.algorithm = algorithm;
 		}
 
+    /**
+     * <p>Value.</p>
+     * @return the value
+     */
 		public String value() {
 			return algorithm;
 		}

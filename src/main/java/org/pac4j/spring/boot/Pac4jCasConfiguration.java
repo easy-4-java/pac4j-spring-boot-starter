@@ -44,6 +44,10 @@ public class Pac4jCasConfiguration {
 	private Pac4jCasProperties pac4jCasProperties;
 
 	@Bean
+    /**
+     * <p>Proxy receptor.</p>
+     * @return the proxy receptor
+     */
 	public CasProxyReceptor proxyReceptor() {
 		CasProxyReceptor proxyReceptor = new CasProxyReceptor();
 		proxyReceptor.setCallbackUrl(pac4jProperties.getCallbackUrl());
@@ -93,6 +97,12 @@ public class Pac4jCasConfiguration {
 	 */
 	@Bean
 	@ConditionalOnProperty(prefix = Pac4jCasProperties.PREFIX, value = Pac4jClientNames.CAS_CLIENT, havingValue = "true")
+    /**
+     * <p>Cas client.</p>
+     * @param configuration
+     * @param callbackUrlResolver
+     * @return the cas client
+     */
 	public CasClient casClient(CasConfiguration configuration, CallbackUrlResolver callbackUrlResolver) {
 		
 		CasClient casClient = new CasClient(configuration);
@@ -111,6 +121,12 @@ public class Pac4jCasConfiguration {
 	
 	@Bean
 	@ConditionalOnProperty(prefix = Pac4jCasProperties.PREFIX, value = Pac4jClientNames.DIRECT_CAS_CLIENT, havingValue = "true")
+    /**
+     * <p>Direct cas client.</p>
+     * @param configuration
+     * @param callbackUrlResolver
+     * @return the direct cas client
+     */
 	public DirectCasClient directCasClient(CasConfiguration configuration, CallbackUrlResolver callbackUrlResolver) {
 		
 		DirectCasClient casClient = new DirectCasClient();
@@ -124,6 +140,12 @@ public class Pac4jCasConfiguration {
 	
 	@Bean 
 	@ConditionalOnProperty(prefix = Pac4jCasProperties.PREFIX, value = Pac4jClientNames.DIRECT_CAS_PROXY_CLIENT, havingValue = "true")
+    /**
+     * <p>Direct cas proxy client.</p>
+     * @param configuration
+     * @param callbackUrlResolver
+     * @return the direct cas proxy client
+     */
 	public DirectCasProxyClient directCasProxyClient(CasConfiguration configuration, CallbackUrlResolver callbackUrlResolver) {
 		
 		DirectCasProxyClient casClient = new DirectCasProxyClient();
@@ -138,6 +160,11 @@ public class Pac4jCasConfiguration {
 	
 	@Bean 
 	@ConditionalOnProperty(prefix = Pac4jCasProperties.PREFIX, value = Pac4jClientNames.CAS_REST_BASIC_AUTH_CLIENT, havingValue = "true")
+    /**
+     * <p>Cas rest basic auth client.</p>
+     * @param configuration
+     * @return the cas rest basic auth client
+     */
 	public CasRestBasicAuthClient casRestBasicAuthClient(CasConfiguration configuration) {
 		
 		CasRestBasicAuthClient casClient = new CasRestBasicAuthClient();
@@ -157,6 +184,11 @@ public class Pac4jCasConfiguration {
 	
 	@Bean
 	@ConditionalOnProperty(prefix = Pac4jCasProperties.PREFIX, value = Pac4jClientNames.CAS_REST_FORM_CLIENT, havingValue = "true")
+    /**
+     * <p>Cas rest form client.</p>
+     * @param configuration
+     * @return the cas rest form client
+     */
 	public CasRestFormClient casRestFormClient(CasConfiguration configuration) {
 		
 		/*

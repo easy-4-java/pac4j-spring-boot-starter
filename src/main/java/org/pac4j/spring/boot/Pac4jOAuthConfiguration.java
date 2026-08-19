@@ -54,6 +54,12 @@ public class Pac4jOAuthConfiguration {
 
 	@Bean
 	@ConditionalOnProperty(prefix = Pac4jOAuthProperties.PREFIX, value = "baidu")
+    /**
+     * <p>Baidu client.</p>
+     * @param ajaxRequestResolver
+     * @param urlResolver
+     * @return the baidu client
+     */
 	public BaiduClient baiduClient(AjaxRequestResolver ajaxRequestResolver, UrlResolver urlResolver) {
 
 		final Pac4jOAuthClientProperties properties = oauthProperties.getBaidu();
@@ -65,6 +71,12 @@ public class Pac4jOAuthConfiguration {
 
 	@Bean
 	@ConditionalOnProperty(prefix = Pac4jOAuthProperties.PREFIX, value = "bitbucket")
+    /**
+     * <p>Bitbucket client.</p>
+     * @param ajaxRequestResolver
+     * @param urlResolver
+     * @return the bitbucket client
+     */
 	public BitbucketClient bitbucketClient(AjaxRequestResolver ajaxRequestResolver, UrlResolver urlResolver) {
 
 		final Pac4jOAuthClientProperties properties = oauthProperties.getBitbucket();
@@ -76,6 +88,12 @@ public class Pac4jOAuthConfiguration {
 
 	@Bean
 	@ConditionalOnProperty(prefix = Pac4jOAuthProperties.PREFIX, value = "cas")
+    /**
+     * <p>Cas o auth wrapper client.</p>
+     * @param ajaxRequestResolver
+     * @param urlResolver
+     * @return the cas o auth wrapper client
+     */
 	public CasOAuthWrapperClient casOAuthWrapperClient(AjaxRequestResolver ajaxRequestResolver, UrlResolver urlResolver) {
 
 		final Pac4jOAuthCasClientProperties properties = oauthProperties.getCas();
@@ -87,6 +105,12 @@ public class Pac4jOAuthConfiguration {
 
 	@Bean
 	@ConditionalOnProperty(prefix = Pac4jOAuthProperties.PREFIX, value = "dropbox")
+    /**
+     * <p>Dropbox client.</p>
+     * @param ajaxRequestResolver
+     * @param urlResolver
+     * @return the dropbox client
+     */
 	public DropBoxClient dropboxClient(AjaxRequestResolver ajaxRequestResolver, UrlResolver urlResolver) {
 
 		final Pac4jOAuthClientProperties properties = oauthProperties.getDropbox();
@@ -98,6 +122,12 @@ public class Pac4jOAuthConfiguration {
 
 	@Bean
 	@ConditionalOnProperty(prefix = Pac4jOAuthProperties.PREFIX, value = "facebook")
+    /**
+     * <p>Facebook client.</p>
+     * @param ajaxRequestResolver
+     * @param urlResolver
+     * @return the facebook client
+     */
 	public FacebookClient facebookClient(AjaxRequestResolver ajaxRequestResolver, UrlResolver urlResolver) {
 
 		final Pac4jOAuthFacebookClientProperties properties = oauthProperties.getFacebook();
@@ -111,6 +141,12 @@ public class Pac4jOAuthConfiguration {
 
 	@Bean
 	@ConditionalOnProperty(prefix = Pac4jOAuthProperties.PREFIX, value = "foursquare")
+    /**
+     * <p>Foursquare client.</p>
+     * @param ajaxRequestResolver
+     * @param urlResolver
+     * @return the foursquare client
+     */
 	public FoursquareClient foursquareClient(AjaxRequestResolver ajaxRequestResolver, UrlResolver urlResolver) {
 
 		final Pac4jOAuthClientProperties properties = oauthProperties.getFoursquare();
@@ -122,6 +158,12 @@ public class Pac4jOAuthConfiguration {
 
 	@Bean
 	@ConditionalOnProperty(prefix = Pac4jOAuthProperties.PREFIX, value = "github")
+    /**
+     * <p>Github client.</p>
+     * @param ajaxRequestResolver
+     * @param urlResolver
+     * @return the github client
+     */
 	public GitHubClient githubClient(AjaxRequestResolver ajaxRequestResolver, UrlResolver urlResolver) {
 
 		final Pac4jOAuthClientProperties properties = oauthProperties.getGithub();
@@ -133,6 +175,12 @@ public class Pac4jOAuthConfiguration {
 
 	@Bean
 	@ConditionalOnProperty(prefix = Pac4jOAuthProperties.PREFIX, value = "google2")
+    /**
+     * <p>Google2 client.</p>
+     * @param ajaxRequestResolver
+     * @param urlResolver
+     * @return the google2 client
+     */
 	public Google2Client google2Client(AjaxRequestResolver ajaxRequestResolver, UrlResolver urlResolver) {
 
 		final Pac4jOAuthClientProperties properties = oauthProperties.getGoogle2();
@@ -144,6 +192,12 @@ public class Pac4jOAuthConfiguration {
 
 	@Bean
 	@ConditionalOnProperty(prefix = Pac4jOAuthProperties.PREFIX, value = "linkedin2")
+    /**
+     * <p>Linkedin2 client.</p>
+     * @param ajaxRequestResolver
+     * @param urlResolver
+     * @return the linkedin2 client
+     */
 	public LinkedIn2Client linkedin2Client(AjaxRequestResolver ajaxRequestResolver, UrlResolver urlResolver) {
 
 		final Pac4jOAuthClientProperties properties = oauthProperties.getLinkedin2();
@@ -155,6 +209,12 @@ public class Pac4jOAuthConfiguration {
 
 	@Bean
 	@ConditionalOnProperty(prefix = Pac4jOAuthProperties.PREFIX, value = "ok")
+    /**
+     * <p>Ok client.</p>
+     * @param ajaxRequestResolver
+     * @param urlResolver
+     * @return the ok client
+     */
 	public OkClient okClient(AjaxRequestResolver ajaxRequestResolver, UrlResolver urlResolver) {
 
 		final Pac4jOAuthOkClientProperties properties = oauthProperties.getOk();
@@ -166,6 +226,12 @@ public class Pac4jOAuthConfiguration {
 
 	@Bean
 	@ConditionalOnProperty(prefix = Pac4jOAuthProperties.PREFIX, value = "oschina")
+    /**
+     * <p>Oschina client.</p>
+     * @param ajaxRequestResolver
+     * @param urlResolver
+     * @return the oschina client
+     */
 	public OschinaClient oschinaClient(AjaxRequestResolver ajaxRequestResolver, UrlResolver urlResolver) {
 
 		final Pac4jOAuthClientProperties properties = oauthProperties.getOschina();
@@ -177,6 +243,12 @@ public class Pac4jOAuthConfiguration {
 
 	@Bean
 	@ConditionalOnProperty(prefix = Pac4jOAuthProperties.PREFIX, value = "paypal")
+    /**
+     * <p>Paypal client.</p>
+     * @param ajaxRequestResolver
+     * @param urlResolver
+     * @return the paypal client
+     */
 	public PayPalClient paypalClient(AjaxRequestResolver ajaxRequestResolver, UrlResolver urlResolver) {
 
 		final Pac4jOAuthClientProperties properties = oauthProperties.getPaypal();
@@ -188,6 +260,12 @@ public class Pac4jOAuthConfiguration {
 
 	@Bean
 	@ConditionalOnProperty(prefix = Pac4jOAuthProperties.PREFIX, value = "qq")
+    /**
+     * <p>Qq client.</p>
+     * @param ajaxRequestResolver
+     * @param urlResolver
+     * @return the qq client
+     */
 	public QQClient qqClient(AjaxRequestResolver ajaxRequestResolver, UrlResolver urlResolver) {
 
 		final Pac4jOAuthClientProperties properties = oauthProperties.getQq();
@@ -199,6 +277,12 @@ public class Pac4jOAuthConfiguration {
 
 	@Bean
 	@ConditionalOnProperty(prefix = Pac4jOAuthProperties.PREFIX, value = "strava")
+    /**
+     * <p>Strava client.</p>
+     * @param ajaxRequestResolver
+     * @param urlResolver
+     * @return the strava client
+     */
 	public StravaClient stravaClient(AjaxRequestResolver ajaxRequestResolver, UrlResolver urlResolver) {
 
 		final Pac4jOAuthStravaClientProperties properties = oauthProperties.getStrava();
@@ -211,6 +295,12 @@ public class Pac4jOAuthConfiguration {
 
 	@Bean
 	@ConditionalOnProperty(prefix = Pac4jOAuthProperties.PREFIX, value = "twitter")
+    /**
+     * <p>Twitter client.</p>
+     * @param ajaxRequestResolver
+     * @param urlResolver
+     * @return the twitter client
+     */
 	public TwitterClient twitterClient(AjaxRequestResolver ajaxRequestResolver, UrlResolver urlResolver) {
 
 		final Pac4jOAuthClientProperties properties = oauthProperties.getTwitter();
@@ -223,6 +313,12 @@ public class Pac4jOAuthConfiguration {
 
 	@Bean
 	@ConditionalOnProperty(prefix = Pac4jOAuthProperties.PREFIX, value = "vk")
+    /**
+     * <p>Vk client.</p>
+     * @param ajaxRequestResolver
+     * @param urlResolver
+     * @return the vk client
+     */
 	public VkClient vkClient(AjaxRequestResolver ajaxRequestResolver, UrlResolver urlResolver) {
 
 		final Pac4jOAuthClientProperties properties = oauthProperties.getVk();
@@ -234,6 +330,12 @@ public class Pac4jOAuthConfiguration {
 
 	@Bean
 	@ConditionalOnProperty(prefix = Pac4jOAuthProperties.PREFIX, value = "weibo")
+    /**
+     * <p>Weibo client.</p>
+     * @param ajaxRequestResolver
+     * @param urlResolver
+     * @return the weibo client
+     */
 	public WeiboClient weiboClient(AjaxRequestResolver ajaxRequestResolver, UrlResolver urlResolver) {
 
 		final Pac4jOAuthClientProperties properties = oauthProperties.getWeibo();
@@ -246,6 +348,12 @@ public class Pac4jOAuthConfiguration {
 
 	@Bean
 	@ConditionalOnProperty(prefix = Pac4jOAuthProperties.PREFIX, value = "wechat")
+    /**
+     * <p>Wechat client.</p>
+     * @param ajaxRequestResolver
+     * @param urlResolver
+     * @return the wechat client
+     */
 	public WechatClient wechatClient(AjaxRequestResolver ajaxRequestResolver, UrlResolver urlResolver) {
 
 		final Pac4jOAuthClientProperties properties = oauthProperties.getWeixin();
@@ -258,6 +366,12 @@ public class Pac4jOAuthConfiguration {
 
 	@Bean
 	@ConditionalOnProperty(prefix = Pac4jOAuthProperties.PREFIX, value = "windowslive")
+    /**
+     * <p>Windowslive client.</p>
+     * @param ajaxRequestResolver
+     * @param urlResolver
+     * @return the windowslive client
+     */
 	public WindowsLiveClient windowsliveClient(AjaxRequestResolver ajaxRequestResolver, UrlResolver urlResolver) {
 
 		final Pac4jOAuthClientProperties properties = oauthProperties.getWindowslive();
@@ -269,6 +383,12 @@ public class Pac4jOAuthConfiguration {
 
 	@Bean
 	@ConditionalOnProperty(prefix = Pac4jOAuthProperties.PREFIX, value = "wordpress")
+    /**
+     * <p>Wordpress client.</p>
+     * @param ajaxRequestResolver
+     * @param urlResolver
+     * @return the wordpress client
+     */
 	public WordPressClient wordpressClient(AjaxRequestResolver ajaxRequestResolver, UrlResolver urlResolver) {
 
 		final Pac4jOAuthClientProperties properties = oauthProperties.getWordpress();
@@ -280,6 +400,12 @@ public class Pac4jOAuthConfiguration {
 
 	@Bean
 	@ConditionalOnProperty(prefix = Pac4jOAuthProperties.PREFIX, value = "yahoo")
+    /**
+     * <p>Yahoo client.</p>
+     * @param ajaxRequestResolver
+     * @param urlResolver
+     * @return the yahoo client
+     */
 	public YahooClient yahooClient(AjaxRequestResolver ajaxRequestResolver, UrlResolver urlResolver) {
 
 		final Pac4jOAuthClientProperties properties = oauthProperties.getYahoo();
@@ -291,6 +417,12 @@ public class Pac4jOAuthConfiguration {
 
 	@Bean
 	@ConditionalOnProperty(prefix = Pac4jOAuthProperties.PREFIX, value = "yiban")
+    /**
+     * <p>Yiban client.</p>
+     * @param ajaxRequestResolver
+     * @param urlResolver
+     * @return the yiban client
+     */
 	public YibanClient yibanClient(AjaxRequestResolver ajaxRequestResolver, UrlResolver urlResolver) {
 
 		final Pac4jOAuthClientProperties properties = oauthProperties.getGithub();

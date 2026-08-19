@@ -38,34 +38,66 @@ public class Pac4jOAuthFacebookClientProperties extends Pac4jOAuthClientProperti
 	protected boolean requiresExtendedToken = false;
 	protected boolean useAppsecretProof = false;
 
+    /**
+     * <p>Returns the fields.</p>
+     * @return the get fields
+     */
 	public String getFields() {
 		return fields;
 	}
 
+    /**
+     * <p>Sets the fields.</p>
+     * @param fields
+     */
 	public void setFields(String fields) {
 		this.fields = fields;
 	}
 
+    /**
+     * <p>Returns the limit.</p>
+     * @return the get limit
+     */
 	public int getLimit() {
 		return limit;
 	}
 
+    /**
+     * <p>Sets the limit.</p>
+     * @param limit
+     */
 	public void setLimit(int limit) {
 		this.limit = limit;
 	}
 
+    /**
+     * <p>Checks if requires extended token.</p>
+     * @return the is requires extended token
+     */
 	public boolean isRequiresExtendedToken() {
 		return requiresExtendedToken;
 	}
 
+    /**
+     * <p>Sets the requires extended token.</p>
+     * @param requiresExtendedToken
+     */
 	public void setRequiresExtendedToken(boolean requiresExtendedToken) {
 		this.requiresExtendedToken = requiresExtendedToken;
 	}
 
+    /**
+     * <p>Checks if use appsecret proof.</p>
+     * @return the is use appsecret proof
+     */
 	public boolean isUseAppsecretProof() {
 		return useAppsecretProof;
 	}
 
+    /**
+     * <p>Sets the use appsecret proof.</p>
+     * @param useAppsecretProof
+     */
 	public void setUseAppsecretProof(boolean useAppsecretProof) {
 		this.useAppsecretProof = useAppsecretProof;
 	}

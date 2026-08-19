@@ -32,34 +32,66 @@ public class Pac4jOAuthCasClientProperties extends Pac4jOAuthClientProperties {
     private boolean springSecurityCompliant = false;
     private boolean implicitFlow = false;
 
+    /**
+     * <p>Returns the cas o auth url.</p>
+     * @return the get cas o auth url
+     */
 	public String getCasOAuthUrl() {
 		return casOAuthUrl;
 	}
 
+    /**
+     * <p>Sets the cas o auth url.</p>
+     * @param casOAuthUrl
+     */
 	public void setCasOAuthUrl(String casOAuthUrl) {
 		this.casOAuthUrl = casOAuthUrl;
 	}
 
+    /**
+     * <p>Returns the cas logout url.</p>
+     * @return the get cas logout url
+     */
 	public String getCasLogoutUrl() {
 		return casLogoutUrl;
 	}
 
+    /**
+     * <p>Sets the cas logout url.</p>
+     * @param casLogoutUrl
+     */
 	public void setCasLogoutUrl(String casLogoutUrl) {
 		this.casLogoutUrl = casLogoutUrl;
 	}
 
+    /**
+     * <p>Checks if spring security compliant.</p>
+     * @return the is spring security compliant
+     */
 	public boolean isSpringSecurityCompliant() {
 		return springSecurityCompliant;
 	}
 
+    /**
+     * <p>Sets the spring security compliant.</p>
+     * @param springSecurityCompliant
+     */
 	public void setSpringSecurityCompliant(boolean springSecurityCompliant) {
 		this.springSecurityCompliant = springSecurityCompliant;
 	}
 
+    /**
+     * <p>Checks if implicit flow.</p>
+     * @return the is implicit flow
+     */
 	public boolean isImplicitFlow() {
 		return implicitFlow;
 	}
 
+    /**
+     * <p>Sets the implicit flow.</p>
+     * @param implicitFlow
+     */
 	public void setImplicitFlow(boolean implicitFlow) {
 		this.implicitFlow = implicitFlow;
 	}

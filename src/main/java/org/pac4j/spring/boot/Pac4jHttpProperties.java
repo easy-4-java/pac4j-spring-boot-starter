@@ -62,90 +62,178 @@ public class Pac4jHttpProperties {
     private boolean directBasicAuthClient = false;
     private String directBasicAuthClientName = "direct-basic-auth";
 
+    /**
+     * <p>Checks if enabled.</p>
+     * @return the is enabled
+     */
 	public boolean isEnabled() {
 		return enabled;
 	}
 
+    /**
+     * <p>Sets the enabled.</p>
+     * @param enabled
+     */
 	public void setEnabled(boolean enabled) {
 		this.enabled = enabled;
 	}
 
+    /**
+     * <p>Returns the login url.</p>
+     * @return the get login url
+     */
 	public String getLoginUrl() {
 		return loginUrl;
 	}
 
+    /**
+     * <p>Sets the login url.</p>
+     * @param loginUrl
+     */
 	public void setLoginUrl(String loginUrl) {
 		this.loginUrl = loginUrl;
 	}
 
+    /**
+     * <p>Returns the username parameter.</p>
+     * @return the get username parameter
+     */
 	public String getUsernameParameter() {
 		return usernameParameter;
 	}
 
+    /**
+     * <p>Sets the username parameter.</p>
+     * @param usernameParameter
+     */
 	public void setUsernameParameter(String usernameParameter) {
 		this.usernameParameter = usernameParameter;
 	}
 
+    /**
+     * <p>Returns the password parameter.</p>
+     * @return the get password parameter
+     */
 	public String getPasswordParameter() {
 		return passwordParameter;
 	}
 
+    /**
+     * <p>Sets the password parameter.</p>
+     * @param passwordParameter
+     */
 	public void setPasswordParameter(String passwordParameter) {
 		this.passwordParameter = passwordParameter;
 	}
 
+    /**
+     * <p>Checks if form client.</p>
+     * @return the is form client
+     */
 	public boolean isFormClient() {
 		return formClient;
 	}
 
+    /**
+     * <p>Sets the form client.</p>
+     * @param formClient
+     */
 	public void setFormClient(boolean formClient) {
 		this.formClient = formClient;
 	}
 
+    /**
+     * <p>Returns the form client name.</p>
+     * @return the get form client name
+     */
 	public String getFormClientName() {
 		return formClientName;
 	}
 
+    /**
+     * <p>Sets the form client name.</p>
+     * @param formClientName
+     */
 	public void setFormClientName(String formClientName) {
 		this.formClientName = formClientName;
 	}
 
+    /**
+     * <p>Checks if indirect basic auth client.</p>
+     * @return the is indirect basic auth client
+     */
 	public boolean isIndirectBasicAuthClient() {
 		return indirectBasicAuthClient;
 	}
 
+    /**
+     * <p>Sets the indirect basic auth client.</p>
+     * @param indirectBasicAuthClient
+     */
 	public void setIndirectBasicAuthClient(boolean indirectBasicAuthClient) {
 		this.indirectBasicAuthClient = indirectBasicAuthClient;
 	}
 
+    /**
+     * <p>Returns the indirect basic auth client name.</p>
+     * @return the get indirect basic auth client name
+     */
 	public String getIndirectBasicAuthClientName() {
 		return indirectBasicAuthClientName;
 	}
 
+    /**
+     * <p>Sets the indirect basic auth client name.</p>
+     * @param indirectBasicAuthClientName
+     */
 	public void setIndirectBasicAuthClientName(String indirectBasicAuthClientName) {
 		this.indirectBasicAuthClientName = indirectBasicAuthClientName;
 	}
 	
+    /**
+     * <p>Returns the realm name.</p>
+     * @return the get realm name
+     */
 	public String getRealmName() {
 		return realmName;
 	}
 
+    /**
+     * <p>Sets the realm name.</p>
+     * @param realmName
+     */
 	public void setRealmName(String realmName) {
 		this.realmName = realmName;
 	}
 
+    /**
+     * <p>Checks if direct basic auth client.</p>
+     * @return the is direct basic auth client
+     */
 	public boolean isDirectBasicAuthClient() {
 		return directBasicAuthClient;
 	}
 
+    /**
+     * <p>Sets the direct basic auth client.</p>
+     * @param directBasicAuthClient
+     */
 	public void setDirectBasicAuthClient(boolean directBasicAuthClient) {
 		this.directBasicAuthClient = directBasicAuthClient;
 	}
 
+    /**
+     * <p>Returns the direct basic auth client name.</p>
+     * @return the get direct basic auth client name
+     */
 	public String getDirectBasicAuthClientName() {
 		return directBasicAuthClientName;
 	}
 
+    /**
+     * <p>Sets the direct basic auth client name.</p>
+     * @param directBasicAuthClientName
+     */
 	public void setDirectBasicAuthClientName(String directBasicAuthClientName) {
 		this.directBasicAuthClientName = directBasicAuthClientName;
 	}
