@@ -4,15 +4,35 @@ import java.util.ArrayList;
 import java.util.Map;
 
 import org.junit.jupiter.api.Test;
+import org.pac4j.core.client.Client;
+import org.pac4j.core.context.CallContext;
+import org.pac4j.core.context.WebContext;
+import org.pac4j.core.context.session.SessionStore;
+import org.pac4j.core.ext.authentication.AuthenticatingFailureCounter;
+import org.pac4j.core.ext.authentication.UsernamePasswordCaptchaAuthenticator;
+import org.pac4j.core.ext.authentication.captcha.CaptchaResolver;
+import org.pac4j.core.ext.credentials.UsernamePasswordCaptchaCredentials;
+import org.pac4j.core.ext.exception.CaptchaNotFoundException;
+import org.pac4j.core.ext.exception.OverRetryRemindException;
+import org.pac4j.http.client.direct.CookieClient;
 import org.pac4j.http.client.direct.DirectBasicAuthClient;
+import org.pac4j.http.client.direct.HeaderClient;
+import org.pac4j.http.client.direct.ParameterClient;
 import org.pac4j.http.client.indirect.FormClient;
 import org.pac4j.http.client.indirect.IndirectBasicAuthClient;
-import org.pac4j.core.client.Client;
+import org.pac4j.core.profile.CommonProfile;
+import org.pac4j.jwt.config.encryption.EncryptionConfiguration;
+import org.pac4j.jwt.config.signature.SignatureConfiguration;
+import org.pac4j.jwt.credentials.authenticator.JwtAuthenticator;
+import org.pac4j.jwt.profile.JwtGenerator;
 import org.pac4j.oauth.client.GitHubClient;
 import org.springframework.boot.autoconfigure.AutoConfigurations;
 import org.springframework.boot.test.context.runner.WebApplicationContextRunner;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 class Pac4jClientConfigurationTest {
 
@@ -39,6 +59,56 @@ class Pac4jClientConfigurationTest {
                     assertThat(form.getLoginUrl()).isEqualTo("/sign-in");
                     assertThat(form.getUsernameParameter()).isEqualTo("account");
                     assertThat(form.getPasswordParameter()).isEqualTo("passcode");
+                });
+    }
+
+    @Test
+    void wiresJwtClientsToTheConfiguredAuthenticator() {
+        new WebApplicationContextRunner()
+                .withConfiguration(AutoConfigurations.of(Pac4jBaseConfiguration.class, Pac4jJwtConfiguration.class))
+                .withBean(CaptchaResolver.class, () -> mock(CaptchaResolver.class))
+                .withBean(AuthenticatingFailureCounter.class, () -> mock(AuthenticatingFailureCounter.class))
+                .withPropertyValues(
+                        "pac4j.enabled=true",
+                        "pac4j.jwt.enabled=true",
+                        "pac4j.jwt.sign-secret=00000000000000000000000000000000",
+                        "pac4j.jwt.encrypt-secret=11111111111111111111111111111111",
+                        "pac4j.jwt.authorization-header-name=X-Fixture-Token",
+                        "pac4j.jwt.authorization-header-prefix=Bearer ",
+                        "pac4j.jwt.authorization-cookie-name=fixture-cookie",
+                        "pac4j.jwt.authorization-param-name=fixture-query",
+                        "pac4j.jwt.login-url=/sign-in",
+                        "pac4j.jwt.callback-url=https://app.example.invalid/callback",
+                        "pac4j.jwt.default-client-name=fixture-form",
+                        "pac4j.jwt.captcha-required=true",
+                        "pac4j.jwt.retry-times-key-attribute=fixture-retries",
+                        "pac4j.jwt.retry-times-when-access-denied=2")
+                .run(context -> {
+                    assertThat(context).hasNotFailed();
+                    var authenticator = context.getBean(JwtAuthenticator.class);
+                    var header = context.getBean(HeaderClient.class);
+                    assertThat(header.getHeaderName()).isEqualTo("X-Fixture-Token");
+                    assertThat(header.getAuthenticator()).isSameAs(authenticator);
+                    assertThat(context.getBean(CookieClient.class).getCookieName()).isEqualTo("fixture-cookie");
+                    assertThat(context.getBean(ParameterClient.class).getParameterName()).isEqualTo("fixture-query");
+                    assertThat(context).hasBean("jwtAuthcClient");
+
+                    var profile = new CommonProfile();
+                    profile.setId("fixture-user");
+                    var generator = new JwtGenerator(context.getBean(SignatureConfiguration.class),
+                            context.getBean(EncryptionConfiguration.class));
+                    assertThat(authenticator.validateToken(generator.generate(profile)).getId())
+                            .isEqualTo("fixture-user");
+
+                    var formAuthenticator = context.getBean(UsernamePasswordCaptchaAuthenticator.class);
+                    var call = new CallContext(mock(WebContext.class), mock(SessionStore.class));
+                    var missingCaptcha = new UsernamePasswordCaptchaCredentials("fixture", "fixture");
+                    assertThatThrownBy(() -> formAuthenticator.validate(call, missingCaptcha))
+                            .isInstanceOf(CaptchaNotFoundException.class);
+                    when(context.getBean(AuthenticatingFailureCounter.class)
+                            .get(call.webContext(), call.sessionStore(), "fixture-retries")).thenReturn(2);
+                    assertThatThrownBy(() -> formAuthenticator.validate(call, missingCaptcha))
+                            .isInstanceOf(OverRetryRemindException.class);
                 });
     }
 

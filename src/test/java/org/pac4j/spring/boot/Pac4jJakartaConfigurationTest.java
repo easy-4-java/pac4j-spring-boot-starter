@@ -6,9 +6,11 @@ import org.pac4j.cas.client.direct.DirectCasClient;
 import org.pac4j.cas.client.direct.DirectCasProxyClient;
 import org.pac4j.cas.client.rest.CasRestBasicAuthClient;
 import org.pac4j.cas.client.rest.CasRestFormClient;
+import org.pac4j.core.authorization.authorizer.CheckHttpMethodAuthorizer;
+import org.pac4j.http.authorization.authorizer.IpRegexpAuthorizer;
 import org.pac4j.core.config.Config;
 import org.pac4j.core.http.adapter.HttpActionAdapter;
-import org.pac4j.core.logout.handler.DefaultLogoutHandler;
+import org.pac4j.core.logout.handler.DefaultSessionLogoutHandler;
 import org.pac4j.jee.http.adapter.JEEHttpActionAdapter;
 import org.springframework.boot.autoconfigure.AutoConfigurations;
 import org.springframework.boot.test.context.runner.WebApplicationContextRunner;
@@ -24,6 +26,8 @@ class Pac4jJakartaConfigurationTest {
                         Pac4jBaseConfiguration.class, Pac4jAutoConfiguration.class, Pac4jCasConfiguration.class))
                 .withPropertyValues(
                         "pac4j.enabled=true",
+                        "pac4j.allowed-ip-regexp-pattern=127[.]0[.]0[.]1",
+                        "pac4j.allowed-http-methods=GET,POST",
                         "pac4j.clients=cas-fixture",
                         "pac4j.callback-url=https://app.example.invalid/callback",
                         "pac4j.logout.destroy-session=true",
@@ -44,8 +48,14 @@ class Pac4jJakartaConfigurationTest {
                 .run(context -> {
                     assertThat(context).hasNotFailed();
                     assertThat(context.getBean(HttpActionAdapter.class)).isSameAs(JEEHttpActionAdapter.INSTANCE);
-                    assertThat(context.getBean(DefaultLogoutHandler.class).isDestroySession()).isTrue();
+                    var logout = context.getBean(DefaultSessionLogoutHandler.class);
+                    assertThat(logout.isDestroySession()).isTrue();
+                    var config = context.getBean(Config.class);
+                    assertThat(config.getSessionLogoutHandler()).isSameAs(logout);
+                    assertThat(config.getAuthorizers().get("isIPAuthenticated")).isInstanceOf(IpRegexpAuthorizer.class);
+                    assertThat(config.getAuthorizers().get("isMethodAuthenticated")).isInstanceOf(CheckHttpMethodAuthorizer.class);
                     var client = context.getBean("casClient", CasClient.class);
+                    assertThat(client.findSessionLogoutHandler()).isSameAs(logout);
                     assertThat(context.getBean(DirectCasClient.class).getName()).isEqualTo("direct-cas");
                     assertThat(context.getBean(DirectCasProxyClient.class).getServiceUrl())
                             .isEqualTo("https://cas.example.invalid/");

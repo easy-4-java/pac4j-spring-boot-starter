@@ -27,6 +27,7 @@ import org.pac4j.core.client.Clients;
 import org.pac4j.core.config.Config;
 import org.pac4j.core.context.HttpConstants.HTTP_METHOD;
 import org.pac4j.core.http.adapter.HttpActionAdapter;
+import org.pac4j.core.logout.handler.SessionLogoutHandler;
 import org.pac4j.core.http.ajax.AjaxRequestResolver;
 import org.pac4j.core.http.callback.CallbackUrlResolver;
 import org.pac4j.core.http.url.UrlResolver;
@@ -84,9 +85,10 @@ public class Pac4jAutoConfiguration {
 	}
 	
 	@Bean
-	public Config config(Pac4jProperties pac4jProperties, Clients clients, HttpActionAdapter httpActionAdapter) {
+	public Config config(Pac4jProperties pac4jProperties, Clients clients, HttpActionAdapter httpActionAdapter, SessionLogoutHandler logoutHandler) {
 		
-		final Config config = new Config(clients);
+		final Config config = new Config();
+		config.setSessionLogoutHandler(logoutHandler);
 		
 		if(StringUtils.hasText(pac4jProperties.getAllowedIpRegexpPattern())) {	
 			config.addAuthorizer("isIPAuthenticated", new IpRegexpAuthorizer(pac4jProperties.getAllowedIpRegexpPattern()));
