@@ -4,14 +4,13 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.pac4j.core.context.JEEContext;
-import org.pac4j.core.http.adapter.JEEHttpActionAdapter;
+import org.pac4j.jee.http.adapter.JEEHttpActionAdapter;
 import org.pac4j.core.http.ajax.DefaultAjaxRequestResolver;
 import org.pac4j.core.http.callback.CallbackUrlResolver;
 import org.pac4j.core.http.url.DefaultUrlResolver;
 import org.pac4j.core.http.url.UrlResolver;
-import org.pac4j.core.logout.handler.DefaultLogoutHandler;
-import org.pac4j.core.logout.handler.LogoutHandler;
+import org.pac4j.core.logout.handler.DefaultSessionLogoutHandler;
+import org.pac4j.core.logout.handler.SessionLogoutHandler;
 
 import java.util.HashMap;
 
@@ -38,15 +37,15 @@ class Pac4jBaseConfigurationTest {
     void logoutHandler() {
         Pac4jLogoutProperties props = new Pac4jLogoutProperties();
         props.setDestroySession(true);
-        LogoutHandler<JEEContext> handler = config.logoutHandler(props);
+        SessionLogoutHandler handler = config.logoutHandler(props);
         assertThat(handler).isNotNull();
-        assertThat(handler).isInstanceOf(DefaultLogoutHandler.class);
+        assertThat(handler).isInstanceOf(DefaultSessionLogoutHandler.class);
     }
 
     @Test
     void logoutHandlerDefaultDestroySession() {
         Pac4jLogoutProperties props = new Pac4jLogoutProperties();
-        LogoutHandler<JEEContext> handler = config.logoutHandler(props);
+        SessionLogoutHandler handler = config.logoutHandler(props);
         assertThat(handler).isNotNull();
     }
 

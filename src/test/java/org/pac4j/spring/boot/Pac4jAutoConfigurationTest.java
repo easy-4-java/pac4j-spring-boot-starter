@@ -9,7 +9,8 @@ import org.pac4j.core.client.Client;
 import org.pac4j.core.client.Clients;
 import org.pac4j.core.config.Config;
 import org.pac4j.core.http.adapter.HttpActionAdapter;
-import org.pac4j.core.http.adapter.JEEHttpActionAdapter;
+import org.pac4j.jee.http.adapter.JEEHttpActionAdapter;
+import org.pac4j.core.logout.handler.DefaultSessionLogoutHandler;
 import org.pac4j.core.http.ajax.DefaultAjaxRequestResolver;
 import org.pac4j.core.http.callback.CallbackUrlResolver;
 import org.pac4j.core.ext.http.callback.QueryParameterCallbackUrlExtResolver;
@@ -75,7 +76,7 @@ class Pac4jAutoConfigurationTest {
         Clients clients = new Clients();
         HttpActionAdapter adapter = JEEHttpActionAdapter.INSTANCE;
 
-        Config cfg = config.config(props, clients, adapter);
+        Config cfg = config.config(props, clients, adapter, new DefaultSessionLogoutHandler());
         assertThat(cfg).isNotNull();
     }
 
@@ -85,7 +86,7 @@ class Pac4jAutoConfigurationTest {
         Clients clients = new Clients();
         HttpActionAdapter adapter = JEEHttpActionAdapter.INSTANCE;
 
-        Config cfg = config.config(props, clients, adapter);
+        Config cfg = config.config(props, clients, adapter, new DefaultSessionLogoutHandler());
         assertThat(cfg).isNotNull();
     }
 
@@ -96,7 +97,7 @@ class Pac4jAutoConfigurationTest {
         Clients clients = new Clients();
         HttpActionAdapter adapter = JEEHttpActionAdapter.INSTANCE;
 
-        Config cfg = config.config(props, clients, adapter);
+        Config cfg = config.config(props, clients, adapter, new DefaultSessionLogoutHandler());
         assertThat(cfg).isNotNull();
     }
 
@@ -107,7 +108,7 @@ class Pac4jAutoConfigurationTest {
         Clients clients = new Clients();
         HttpActionAdapter adapter = JEEHttpActionAdapter.INSTANCE;
 
-        Config cfg = config.config(props, clients, adapter);
+        Config cfg = config.config(props, clients, adapter, new DefaultSessionLogoutHandler());
         assertThat(cfg).isNotNull();
     }
 }

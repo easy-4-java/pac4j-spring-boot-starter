@@ -15,11 +15,11 @@ import org.pac4j.core.authorization.generator.AuthorizationGenerator;
 import org.pac4j.core.client.Client;
 import org.pac4j.core.client.Clients;
 import org.pac4j.core.config.Config;
-import org.pac4j.core.context.JEEContext;
 import org.pac4j.core.http.ajax.AjaxRequestResolver;
 import org.pac4j.core.http.callback.CallbackUrlResolver;
 import org.pac4j.core.http.url.UrlResolver;
-import org.pac4j.core.logout.handler.LogoutHandler;
+import org.pac4j.core.logout.handler.DefaultSessionLogoutHandler;
+import org.pac4j.core.logout.handler.SessionLogoutHandler;
 
 /**
  * Tests for {@link Pac4jBaseConfiguration} and {@link Pac4jAutoConfiguration}.
@@ -41,7 +41,7 @@ class Pac4jBaseAndAutoConfigurationTest {
     void logoutHandler() {
         Pac4jLogoutProperties logoutProps = new Pac4jLogoutProperties();
         logoutProps.setDestroySession(false);
-        LogoutHandler<JEEContext> handler = baseConfig.logoutHandler(logoutProps);
+        SessionLogoutHandler handler = baseConfig.logoutHandler(logoutProps);
         assertThat(handler).isNotNull();
     }
 
@@ -121,7 +121,7 @@ class Pac4jBaseAndAutoConfigurationTest {
         Pac4jBaseConfiguration baseCfg = new Pac4jBaseConfiguration();
         var httpAdapter = baseCfg.httpActionAdapter();
 
-        Config config = autoConfig.config(props, clients, httpAdapter);
+        Config config = autoConfig.config(props, clients, httpAdapter, new DefaultSessionLogoutHandler());
         assertThat(config).isNotNull();
     }
 }

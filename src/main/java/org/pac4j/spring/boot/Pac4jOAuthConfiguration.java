@@ -425,7 +425,7 @@ public class Pac4jOAuthConfiguration {
      */
 	public YibanClient yibanClient(AjaxRequestResolver ajaxRequestResolver, UrlResolver urlResolver) {
 
-		final Pac4jOAuthClientProperties properties = oauthProperties.getGithub();
+		final Pac4jOAuthClientProperties properties = oauthProperties.getYiban();
 		final YibanClient client = new YibanClient(properties.getKey(), properties.getSecret());
 		this.initOAuth20Client(client, properties, ajaxRequestResolver, urlResolver);
 
