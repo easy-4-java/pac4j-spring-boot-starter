@@ -170,8 +170,10 @@
                         </additionalClasspathElements>
                         <includes>
                             <include>**/*Test.java</include>
+                            <include>**/*Tests.java</include>
                         <include>**/*_Test.java</include>
                         </includes>
+                        <failIfNoTests>true</failIfNoTests>
                         <excludes>
                             <exclude>**/TestBean.java</exclude>
                         </excludes>
@@ -701,8 +703,8 @@
         
         <!-- For Servlet Api -->
         <dependency>
-            <groupId>jakarta.servlet</groupId>
-            <artifactId>jakarta.servlet-api</artifactId>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
             <optional>true</optional>
         </dependency>
 

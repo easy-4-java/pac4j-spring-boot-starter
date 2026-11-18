@@ -19,14 +19,12 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 
-import jakarta.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpServletResponse;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 public class Pac4jUrlUtils {
-
-	 private static final Logger LOGGER = LoggerFactory.getLogger(Pac4jUrlUtils.class);
 
 	 /**
      * Sends the redirect message and captures the exceptions that we can't possibly do anything with.
@@ -38,7 +36,7 @@ public class Pac4jUrlUtils {
         try {
             response.sendRedirect(url);
         } catch (final IOException e) {
-            LOGGER.warn(e.getMessage(), e);
+            log.warn(e.getMessage(), e);
         }
 
     }
