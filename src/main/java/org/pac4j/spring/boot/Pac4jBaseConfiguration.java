@@ -1,16 +1,15 @@
 package org.pac4j.spring.boot;
 
-import org.pac4j.core.context.JEEContext;
 import org.pac4j.core.ext.http.callback.QueryParameterCallbackUrlExtResolver;
 import org.pac4j.core.http.adapter.HttpActionAdapter;
-import org.pac4j.core.http.adapter.JEEHttpActionAdapter;
+import org.pac4j.jee.http.adapter.JEEHttpActionAdapter;
 import org.pac4j.core.http.ajax.AjaxRequestResolver;
 import org.pac4j.core.http.ajax.DefaultAjaxRequestResolver;
 import org.pac4j.core.http.callback.CallbackUrlResolver;
 import org.pac4j.core.http.url.DefaultUrlResolver;
 import org.pac4j.core.http.url.UrlResolver;
-import org.pac4j.core.logout.handler.DefaultLogoutHandler;
-import org.pac4j.core.logout.handler.LogoutHandler;
+import org.pac4j.core.logout.handler.DefaultSessionLogoutHandler;
+import org.pac4j.core.logout.handler.SessionLogoutHandler;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
@@ -28,8 +27,8 @@ public class Pac4jBaseConfiguration {
 	
 	@Bean
 	@ConditionalOnMissingBean
-    public LogoutHandler<JEEContext> logoutHandler(Pac4jLogoutProperties logoutProperties){
-		DefaultLogoutHandler<JEEContext> logoutHandler = new DefaultLogoutHandler<JEEContext>();
+    public SessionLogoutHandler logoutHandler(Pac4jLogoutProperties logoutProperties){
+		DefaultSessionLogoutHandler logoutHandler = new DefaultSessionLogoutHandler();
 		logoutHandler.setDestroySession(logoutProperties.isDestroySession());
 		return logoutHandler;
 	}
@@ -56,7 +55,7 @@ public class Pac4jBaseConfiguration {
 	
 	@Bean
 	@ConditionalOnMissingBean
-	protected HttpActionAdapter<Object, JEEContext> httpActionAdapter() {
+	protected HttpActionAdapter httpActionAdapter() {
 		return JEEHttpActionAdapter.INSTANCE;
 	}
 }
