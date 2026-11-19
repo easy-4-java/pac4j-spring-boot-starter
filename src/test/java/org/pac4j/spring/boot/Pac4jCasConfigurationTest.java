@@ -9,11 +9,8 @@ import org.junit.jupiter.api.Test;
 import org.pac4j.cas.client.CasProxyReceptor;
 import org.pac4j.cas.config.CasConfiguration;
 import org.pac4j.cas.config.CasProtocol;
-import org.pac4j.core.context.JEEContext;
 import org.pac4j.core.http.callback.CallbackUrlResolver;
 import org.pac4j.core.http.url.UrlResolver;
-import org.pac4j.core.logout.handler.DefaultLogoutHandler;
-import org.pac4j.core.logout.handler.LogoutHandler;
 
 /**
  * Tests for {@link Pac4jCasConfiguration} bean methods.
@@ -72,11 +69,10 @@ class Pac4jCasConfigurationTest {
 
     @Test
     void casConfiguration() {
-        LogoutHandler<JEEContext> logoutHandler = new DefaultLogoutHandler<>();
         UrlResolver urlResolver = new org.pac4j.core.http.url.DefaultUrlResolver();
         CasProxyReceptor receptor = new CasProxyReceptor();
 
-        CasConfiguration casConfig = config.casConfiguration(logoutHandler, urlResolver, receptor);
+        CasConfiguration casConfig = config.casConfiguration(urlResolver, receptor);
         assertThat(casConfig).isNotNull();
     }
 

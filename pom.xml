@@ -58,13 +58,12 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <!-- Third-Party Dependencies -->
-        <cas-client.version>3.6.4</cas-client.version>
         <commons-io.version>2.22.0</commons-io.version>
         <fastjson2.version>2.0.52</fastjson2.version>
         <lombok.version>1.18.46</lombok.version>
-        <pac4j-biz.version>3.0.x.20260630-SNAPSHOT</pac4j-biz.version>
-        <pac4j-oauth-ext.version>3.0.x.20260630-SNAPSHOT</pac4j-oauth-ext.version>
-        <pac4j.version>4.5.8</pac4j.version>
+        <pac4j-extension.version>3.0.x.20260630-SNAPSHOT</pac4j-extension.version>
+        <pac4j-oauth-extension.version>3.0.x.20260630-SNAPSHOT</pac4j-oauth-extension.version>
+        <pac4j.version>6.5.9</pac4j.version>
         <scribejava.version>8.3.3</scribejava.version>
         <slf4j.version>2.0.18</slf4j.version>
         <woodstox-asl.version>4.4.1</woodstox-asl.version>
@@ -109,13 +108,6 @@
                 <version>${scribejava.version}</version>
             </dependency>
 
-            <!-- https://mvnrepository.com/artifact/org.jasig.cas.client/cas-client-core -->
-            <dependency>
-                <groupId>org.jasig.cas.client</groupId>
-                <artifactId>cas-client-core</artifactId>
-                <version>${cas-client.version}</version>
-            </dependency>
-
             <!-- https://mvnrepository.com/artifact/org.codehaus.woodstox/woodstox-core-asl -->
             <dependency>
                 <groupId>org.codehaus.woodstox</groupId>
@@ -145,8 +137,8 @@
             <!-- Source: https://github.com/easy-4-java/pac4j-biz — easy4j pac4j-biz -->
             <dependency>
                 <groupId>io.github.easy4j</groupId>
-                <artifactId>pac4j-biz</artifactId>
-                <version>${pac4j-biz.version}</version>
+                <artifactId>pac4j-extension-core</artifactId>
+                <version>${pac4j-extension.version}</version>
             </dependency>
 
             <!-- https://mvnrepository.com/artifact/org.pac4j/pac4j-cas -->
@@ -172,8 +164,8 @@
             <!-- Source: https://github.com/easy-4-java/pac4j-oauth-ext — easy4j pac4j-oauth-ext -->
             <dependency>
                 <groupId>io.github.easy4j</groupId>
-                <artifactId>pac4j-oauth-ext</artifactId>
-                <version>${pac4j-oauth-ext.version}</version>
+                <artifactId>pac4j-oauth-extension</artifactId>
+                <version>${pac4j-oauth-extension.version}</version>
             </dependency>
 
             <!-- https://mvnrepository.com/artifact/org.pac4j/pac4j-openid -->
@@ -337,6 +329,12 @@
             <artifactId>fastjson2</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>org.pac4j</groupId>
+            <artifactId>pac4j-jakartaee</artifactId>
+            <version>${pac4j.version}</version>
+        </dependency>
+
         <!-- https://mvnrepository.com/artifact/org.pac4j/pac4j-core -->
         <dependency>
             <groupId>org.pac4j</groupId>
@@ -350,7 +348,7 @@
         <!-- Source: https://github.com/easy-4-java/pac4j-biz — easy4j pac4j-biz -->
         <dependency>
             <groupId>io.github.easy4j</groupId>
-            <artifactId>pac4j-biz</artifactId>
+            <artifactId>pac4j-extension-core</artifactId>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/org.pac4j/pac4j-cas -->
@@ -381,7 +379,7 @@
         <!-- Source: https://github.com/easy-4-java/pac4j-oauth-ext — easy4j pac4j-oauth-ext -->
         <dependency>
             <groupId>io.github.easy4j</groupId>
-            <artifactId>pac4j-oauth-ext</artifactId>
+            <artifactId>pac4j-oauth-extension</artifactId>
             <scope>provided</scope>
         </dependency>
         <!-- https://mvnrepository.com/artifact/com.github.scribejava/scribejava-core -->

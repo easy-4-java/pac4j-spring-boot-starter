@@ -1,0 +1,74 @@
+name: Pac4j Jakarta CI
+
+on:
+  push:
+    branches:
+      - feature/REQ-20261119-wandl-pac4j-41-jakarta
+      - test/20261119
+      - 4.1.x
+  pull_request:
+    branches:
+      - test/20261119
+      - 4.1.x
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: '21'
+
+      - name: Checkout Pac4j extension
+        uses: actions/checkout@v7
+        with:
+          repository: easy-4-java/pac4j-extension
+          ref: 608673480b6387ffeff94631dc23edbfe05c36cd
+          path: .ci-dependencies/pac4j-extension
+      - name: Checkout Pac4j OAuth extension
+        uses: actions/checkout@v7
+        with:
+          repository: easy-4-java/pac4j-oauth-extension
+          ref: b4a9758fe6edd8fedf49d15488e8ea1f2b7a0409
+          path: .ci-dependencies/pac4j-oauth-extension
+
+      - name: Build dependency snapshots from source
+        shell: bash
+        run: |
+          set -euo pipefail
+          settings="$RUNNER_TEMP/maven-central.xml"
+          cat > "$settings" <<'XML'
+          <settings>
+            <mirrors>
+              <mirror>
+                <id>central-only</id>
+                <url>https://repo.maven.apache.org/maven2</url>
+                <mirrorOf>*</mirrorOf>
+              </mirror>
+            </mirrors>
+          </settings>
+          XML
+          ./mvnw -B -ntp -s "$settings" -Dmaven.repo.local="$RUNNER_TEMP/verified-m2" \
+            -Dgpg.skip=true -f .ci-dependencies/pac4j-extension/pom.xml \
+            -pl pac4j-extension-core -am clean install
+          ./mvnw -B -ntp -s "$settings" -Dmaven.repo.local="$RUNNER_TEMP/verified-m2" \
+            -Dgpg.skip=true -f .ci-dependencies/pac4j-oauth-extension/pom.xml clean install
+
+      - name: Verify the Boot 4.1 starter
+        run: >
+          ./mvnw -B -ntp -s "$RUNNER_TEMP/maven-central.xml"
+          -Dmaven.repo.local="$RUNNER_TEMP/verified-m2" clean verify
+      - name: Upload test and coverage reports
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: verification-reports
+          path: |
+            target/surefire-reports
+            target/site/jacoco

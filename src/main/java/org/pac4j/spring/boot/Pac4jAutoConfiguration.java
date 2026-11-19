@@ -30,6 +30,7 @@ import org.pac4j.core.http.adapter.HttpActionAdapter;
 import org.pac4j.core.http.ajax.AjaxRequestResolver;
 import org.pac4j.core.http.callback.CallbackUrlResolver;
 import org.pac4j.core.http.url.UrlResolver;
+import org.pac4j.core.logout.handler.SessionLogoutHandler;
 import org.pac4j.http.authorization.authorizer.IpRegexpAuthorizer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -97,12 +98,15 @@ public class Pac4jAutoConfiguration {
      * <p>Config.</p>
      * @param pac4jProperties
      * @param clients
-     * @param httpActionAdapter
+     * @param httpActionAdapter HTTP 操作适配器
+     * @param logoutHandler 会话注销处理器
      * @return the config
      */
-	public Config config(Pac4jProperties pac4jProperties, Clients clients, HttpActionAdapter httpActionAdapter) {
+	public Config config(Pac4jProperties pac4jProperties, Clients clients, HttpActionAdapter httpActionAdapter,
+			SessionLogoutHandler logoutHandler) {
 		
-		final Config config = new Config(clients);
+		final Config config = new Config();
+		config.setSessionLogoutHandler(logoutHandler);
 		
 		if(StringUtils.hasText(pac4jProperties.getAllowedIpRegexpPattern())) {	
 			config.addAuthorizer("isIPAuthenticated", new IpRegexpAuthorizer(pac4jProperties.getAllowedIpRegexpPattern()));
