@@ -497,6 +497,8 @@
         <maven-surefire-plugin.version>3.5.0</maven-surefire-plugin.version>
         <maven-war-plugin.version>3.4.0</maven-war-plugin.version>
         <!-- Dependency versions -->
+        <commons-lang3.version>3.22.0</commons-lang3.version>
+        <jackson-bom.version>2.21.8</jackson-bom.version>
         <cas-client.version>3.6.4</cas-client.version>
         <lombok.version>1.18.34</lombok.version>
         <fastjson2.version>2.0.52</fastjson2.version>
@@ -563,7 +565,7 @@
             <!-- Source: https://github.com/easy-4-java/pac4j-biz — easy4j pac4j-biz -->
             <dependency>
                 <groupId>io.github.easy4j</groupId>
-                <artifactId>pac4j-biz</artifactId>
+                <artifactId>pac4j-extension-core</artifactId>
                 <version>${pac4j-biz.version}</version>
             </dependency>
 
@@ -591,7 +593,7 @@
             <!-- Source: https://github.com/easy-4-java/pac4j-oauth-ext — easy4j pac4j-oauth-ext -->
             <dependency>
                 <groupId>io.github.easy4j</groupId>
-                <artifactId>pac4j-oauth-ext</artifactId>
+                <artifactId>pac4j-oauth-extension</artifactId>
                 <version>${pac4j-oauth-ext.version}</version>
             </dependency>
             <!-- PAC4J For OpenId Protocol  -->
@@ -781,7 +783,7 @@
         <!-- Source: https://github.com/easy-4-java/pac4j-biz — easy4j pac4j-biz -->
         <dependency>
             <groupId>io.github.easy4j</groupId>
-            <artifactId>pac4j-biz</artifactId>
+            <artifactId>pac4j-extension-core</artifactId>
         </dependency>
 
         <!-- PAC4J For CAS Protocol  -->
@@ -813,7 +815,7 @@
         <!-- Source: https://github.com/easy-4-java/pac4j-oauth-ext — easy4j pac4j-oauth-ext -->
         <dependency>
             <groupId>io.github.easy4j</groupId>
-            <artifactId>pac4j-oauth-ext</artifactId>
+            <artifactId>pac4j-oauth-extension</artifactId>
             <scope>provided</scope>
         </dependency>
         <!-- https://mvnrepository.com/artifact/com.github.scribejava/scribejava-core -->
